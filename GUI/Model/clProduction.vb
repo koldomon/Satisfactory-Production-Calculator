@@ -84,6 +84,7 @@
 
     Friend Sub ResetProductions()
         Me.Productions.ForEach(Sub(x) x.ResetProductions())
+        Me.AdditionalItems.Clear()
         Me.Productions.Clear()
     End Sub
 

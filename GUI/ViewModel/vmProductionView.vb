@@ -9,7 +9,7 @@ Imports System.Runtime.CompilerServices
     Private _ItemsPerMinute As Double
     Private _Resources As New List(Of ResourceView)
     Private _Productions As New List(Of ProductionView)
-    Private _AdditionalProductions As New List(Of ProductionView)
+    Private _AdditionalItems As New List(Of ProductionView)
     Private _AllProductions As New List(Of ProductionView)
     Private _AllAdditionalItems As New List(Of ProductionView)
     Private _IsSelected As Boolean
@@ -73,11 +73,11 @@ Imports System.Runtime.CompilerServices
     End Property
     Public ReadOnly Property AdditionalItems As List(Of ProductionView)
         Get
-            If (_AdditionalProductions Is Nothing) OrElse (Not _AdditionalProductions.Any) Then
-                _AdditionalProductions = BaseObj.AdditionalItems.Select(Function(x) New ProductionView(MainView, x)).ToList
+            If (_AdditionalItems Is Nothing) OrElse (Not _AdditionalItems.Any) Then
+                _AdditionalItems = BaseObj.AdditionalItems.Select(Function(x) New ProductionView(MainView, x)).ToList
             End If
 
-            Return _AdditionalProductions
+            Return _AdditionalItems
         End Get
     End Property
     Public ReadOnly Property Resources As List(Of ResourceView)
@@ -148,10 +148,14 @@ Imports System.Runtime.CompilerServices
         Me.Productions.ForEach(myResetFunction)
         Me.BaseObj.ResetProductions()
 
+        Me._AdditionalItems.Clear()
         Me._Productions.Clear()
+        Me._AllAdditionalItems.Clear()
         Me._AllProductions.Clear()
 
+        NotifyPropertyChanged(NameOf(AdditionalItems))
         NotifyPropertyChanged(NameOf(Productions))
+        NotifyPropertyChanged(NameOf(AllAdditionalItems))
         NotifyPropertyChanged(NameOf(AllProductions))
     End Sub
     Friend Sub Expand(
