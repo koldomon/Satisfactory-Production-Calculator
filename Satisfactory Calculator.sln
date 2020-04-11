@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{1E9FB5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B8D3F836-BC17-4C32-85FC-8B56F4CB17F9}"
 	ProjectSection(SolutionItems) = preProject
-		..\FHEManager\LICENSE = ..\FHEManager\LICENSE
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
