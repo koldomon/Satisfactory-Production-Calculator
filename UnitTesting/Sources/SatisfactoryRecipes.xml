@@ -207,7 +207,7 @@
         <Resource Type="Wood" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="15" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Cheap Silica" Type="Silica" Category="Item" ProductionPerMinute="26.25" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Cheap Silica" Type="Silica" Category="BasicMaterial" ProductionPerMinute="26.25" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
       <Resources>
         <Resource Type="Raw Quartz" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="11.25" GlobalSourcesCount="0" />
         <Resource Type="Limestone" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="18.75" GlobalSourcesCount="0" />
@@ -415,13 +415,13 @@
         <Resource Type="Fabric" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="15" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Fine Black Powder" Type="Black Powder" Category="Item" ProductionPerMinute="15" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Fine Black Powder" Type="Black Powder" Category="BasicMaterial" ProductionPerMinute="15" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
       <Resources>
         <Resource Type="Sulfur" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="7.5" GlobalSourcesCount="0" />
         <Resource Type="Compacted Coal" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="3.75" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Fine Concrete" Type="Concrete" Category="Item" ProductionPerMinute="25" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Fine Concrete" Type="Concrete" Category="BasicMaterial" ProductionPerMinute="25" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
       <Resources>
         <Resource Type="Silica" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="7.5" GlobalSourcesCount="0" />
         <Resource Type="Limestone" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="30" GlobalSourcesCount="0" />
@@ -811,7 +811,7 @@
         <Resource Type="Water" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="20" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Pure Quartz Crystal" Type="Quartz Crystal" Category="Item" ProductionPerMinute="52.5" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Pure Quartz Crystal" Type="Quartz Crystal" Category="BasicMaterial" ProductionPerMinute="52.5" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
       <Resources>
         <Resource Type="Raw Quartz" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="67.5" GlobalSourcesCount="0" />
         <Resource Type="Water" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="37.5" GlobalSourcesCount="0" />
@@ -887,7 +887,7 @@
         <Resource Type="Screw" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="60" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Residual Fuel" Type="Fuel" Category="Item" ProductionPerMinute="40" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Residual Fuel" Type="Fuel" Category="Fluid" ProductionPerMinute="40" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
       <Resources>
         <Resource Type="Heavy Oil Residue" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="60" GlobalSourcesCount="0" />
       </Resources>
@@ -933,7 +933,7 @@
         <Resource Type="Crude Oil" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="30" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Rubber Concrete" Type="Concrete" Category="Item" ProductionPerMinute="45" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Rubber Concrete" Type="Concrete" Category="BasicMaterial" ProductionPerMinute="45" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
       <Resources>
         <Resource Type="Limestone" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="50" GlobalSourcesCount="0" />
         <Resource Type="Rubber" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="10" GlobalSourcesCount="0" />
@@ -1104,7 +1104,7 @@
         <Resource Type="Compacted Coal" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="15" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Unpackage Fuel" Type="Fuel" Category="Item" ProductionPerMinute="60" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Unpackage Fuel" Type="Fuel" Category="Fluid" ProductionPerMinute="60" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
       <AdditionalProductions>
         <Resource Type="Empty Canister" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="60" GlobalSourcesCount="0" />
       </AdditionalProductions>
@@ -1112,7 +1112,7 @@
         <Resource Type="Packaged Fuel" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="60" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Unpackage Heavy Oil Residue" Type="Heavy Oil Residue" Category="Item" ProductionPerMinute="20" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Unpackage Heavy Oil Residue" Type="Heavy Oil Residue" Category="Fluid" ProductionPerMinute="20" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
       <AdditionalProductions>
         <Resource Type="Empty Canister" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="20" GlobalSourcesCount="0" />
       </AdditionalProductions>
@@ -1120,7 +1120,7 @@
         <Resource Type="Packaged Heavy Oil Residue" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="20" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Unpackage Liquid Biofuel" Type="Liquid Biofuel" Category="Item" ProductionPerMinute="60" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Unpackage Liquid Biofuel" Type="Liquid Biofuel" Category="Fluid" ProductionPerMinute="60" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
       <AdditionalProductions>
         <Resource Type="Empty Canister" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="60" GlobalSourcesCount="0" />
       </AdditionalProductions>
@@ -1128,7 +1128,7 @@
         <Resource Type="Packaged Liquid Biofuel" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="60" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Unpackage Oil" Type="Crude Oil" Category="Item" ProductionPerMinute="60" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Unpackage Oil" Type="Crude Oil" Category="BasicFluid" ProductionPerMinute="60" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
       <AdditionalProductions>
         <Resource Type="Empty Canister" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="60" GlobalSourcesCount="0" />
       </AdditionalProductions>
@@ -1144,7 +1144,7 @@
         <Resource Type="Packaged Turbofuel" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="20" GlobalSourcesCount="0" />
       </Resources>
     </Resource>
-    <Resource Name="Unpackage Water" Type="Water" Category="Item" ProductionPerMinute="0" ProductionPerMachine="120" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Unpackage Water" Type="Water" Category="BasicFluid" ProductionPerMinute="0" ProductionPerMachine="120" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0">
       <AdditionalProductions>
         <Resource Type="Empty Canister" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="120" GlobalSourcesCount="0" />
       </AdditionalProductions>
@@ -1175,7 +1175,7 @@
       </Resources>
     </Resource>
     <Resource Name="Water" Type="Water" Category="BasicFluid" ProductionPerMinute="0" ProductionPerMachine="120" IsAlternativeRecipe="false" ItemsPerMinute="0" GlobalSourcesCount="0" />
-    <Resource Name="Wet Concrete" Type="Concrete" Category="Item" ProductionPerMinute="80" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
+    <Resource Name="Wet Concrete" Type="Concrete" Category="BasicMaterial" ProductionPerMinute="80" ProductionPerMachine="0" IsAlternativeRecipe="true" ItemsPerMinute="0" GlobalSourcesCount="0">
       <Resources>
         <Resource Type="Limestone" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="120" GlobalSourcesCount="0" />
         <Resource Type="Water" ProductionPerMinute="0" ProductionPerMachine="0" IsAlternativeRecipe="false" ItemsPerMinute="100" GlobalSourcesCount="0" />

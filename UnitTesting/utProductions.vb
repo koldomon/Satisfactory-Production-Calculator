@@ -23,23 +23,16 @@ Imports Satisfactory
 
     <DataTestMethod, DynamicData(NameOf(GetRecipes), DynamicDataSourceType.Method)>
     Public Sub TestAllProductions(thisRecipe As ResourceView)
-        glbViewModel.AddProduction(thisRecipe, 10)
+        Dim myProdView = glbViewModel.AddProduction(thisRecipe, 10)
+        Assert.IsNotNull(myProdView.Productions)
+        Assert.IsNotNull(myProdView.AdditionalItems)
+
     End Sub
 
     Private Shared Iterator Function GetRecipes() As IEnumerable(Of Object())
         For Each myRecipe In glbViewModel.Recipes
             Yield New Object() {myRecipe}
         Next
-
-        'Yield New Object() {".\TestData\EM HP GIS - BA dictionary GERMAN (WIP) V0.1_Vici.xlsm"}
-        'Yield New Object() {".\TestData\EM TS LTS - 030 Sales (WIP).xlsm"}
-        'Yield New Object() {".\TestData\EM TS LTS - 081 Functional Safety (WIP).xlsm"}
-        'Yield New Object() {".\TestData\EM TS LTS - 104 InfoSec Com (released).xlsm"}
-        'Yield New Object() {".\TestData\EM TS LTS - 111 Primary Eng (WIP)_oldSchema.xlsm"}
-        'Yield New Object() {".\TestData\LC AA RC-CN_2018-10-22.xlsm"}
-        'Yield New Object() {".\TestData\Master - EN dictionary (WIP) SPANISH_00.xlsm"}
-        'Yield New Object() {".\TestData\PG DR GO OER DBG - SST Systems (work in progress).xlsm"}
-        'Yield New Object() {".\TestData\PG SU Dictionary Mechanical 20190128.xlsm"}
     End Function
 
     Private Shared Function LoadRecipes() As List(Of Resource)

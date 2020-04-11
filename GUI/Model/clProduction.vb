@@ -6,6 +6,7 @@
     Public Property ItemsPerMinute As Double
     Public Property Resources As New List(Of Resource)
     Public Property Productions As New List(Of Production)
+    Public Property AdditionalItems As New List(Of Production)
 
 
     Friend Sub Expand(thisRecipes As List(Of Resource),
@@ -17,11 +18,23 @@
         If (Me.Recipe.Resources Is Nothing) Then Exit Sub
 
         For Each myResource In Me.Recipe.Resources
-            Dim myRecipe As Resource = GetRecipe(myResource, thisRecipes, thisAltRecipes, thisMinerType, thisMinerSpeed, thisResourceRate)
-            Dim myProduction = New Production With {.Recipe = myRecipe, .ItemsPerMinute = (Me.ItemsPerMinute / Me.Recipe.GetProductionRate(thisMinerType, thisMinerSpeed, thisResourceRate)) * myResource.ItemsPerMinute}
+            Dim mySelectedResource As Resource = GetRecipe(myResource, thisRecipes, thisAltRecipes, thisMinerType, thisMinerSpeed, thisResourceRate)
+            Dim myProduction = New Production With {.Recipe = mySelectedResource, .ItemsPerMinute = (Me.ItemsPerMinute / Me.Recipe.GetProductionRate(thisMinerType, thisMinerSpeed, thisResourceRate)) * myResource.ItemsPerMinute}
             myProduction.Expand(thisRecipes, thisAltRecipes, thisMinerType, thisMinerSpeed, thisResourceRate, thisGlobalResources)
             Me.Productions.Add(myProduction)
+
+            If myProduction.AdditionalItems IsNot Nothing AndAlso myProduction.AdditionalItems.Any Then
+                Me.AdditionalItems.AddRange(myProduction.AdditionalItems)
+            End If
         Next
+
+        If (Me.Recipe.AdditionalResources IsNot Nothing) AndAlso (Me.Recipe.AdditionalResources.Any) Then
+            For Each myAdditionalResource In Me.Recipe.AdditionalResources
+                Dim myAdditionalProduction = New Production With {.Recipe = myAdditionalResource, .ItemsPerMinute = Me.ItemsPerMinute * (myAdditionalResource.ItemsPerMinute / Me.Recipe.GetProductionRate(thisMinerType, thisMinerSpeed, thisResourceRate))}
+                Me.AdditionalItems.Add(myAdditionalProduction)
+            Next
+        End If
+
     End Sub
 
     Private Function GetRecipe(thisResource As Resource,
@@ -58,7 +71,7 @@
             If (myReturn IsNot Nothing) Then Return myReturn
 
             'Then look in the additional productions
-            myList = thisRecipes.Where(Function(x) (x.AdditionalProductions IsNot Nothing) AndAlso (x.AdditionalProductions.Where(Function(y) y.Type = thisResource.Type).Any)).OrderBy(Function(x) x.ProductionCost).ToList
+            myList = thisRecipes.Where(Function(x) (x.AdditionalResources IsNot Nothing) AndAlso (x.AdditionalResources.Where(Function(y) y.Type = thisResource.Type).Any)).OrderBy(Function(x) x.ProductionCost).ToList
             myReturn = myList.FirstOrDefault
             If (myReturn IsNot Nothing) Then Return myReturn
 

@@ -18,7 +18,7 @@
     <XmlAttribute> Public Property ItemsPerMinute As Double
     <XmlAttribute> Public Property GlobalSourcesType As String
     <XmlAttribute> Public Property GlobalSourcesCount As Double
-    <XmlArray(ElementName:="AdditionalProductions", IsNullable:=False), XmlArrayItem(Type:=GetType(Resource), ElementName:="Resource")> Public Property AdditionalProductions As List(Of Resource)
+    <XmlArray(ElementName:="AdditionalProductions", IsNullable:=False), XmlArrayItem(Type:=GetType(Resource), ElementName:="Resource")> Public Property AdditionalResources As List(Of Resource)
     <XmlArray(ElementName:="Resources", IsNullable:=False), XmlArrayItem(Type:=GetType(Resource), ElementName:="Resource")> Public Property Resources As List(Of Resource)
     <XmlArray(ElementName:="GlobalSources", IsNullable:=False), XmlArrayItem(Type:=GetType(Resource), ElementName:="Resource")> Public Property GlobalSources As List(Of Resource)
     <XmlIgnore> Public ReadOnly Property GlobalSourcesSum As Double
@@ -121,7 +121,13 @@
     Public Overloads Function Equals(other As Resource) As Boolean Implements IEquatable(Of Resource).Equals
         If (other Is Nothing) Then Return False
 
-        Return Me.Name.Equals(other.Name) AndAlso Me.Type.Equals(other.Type)
+        If (Not String.IsNullOrEmpty(Me.Name)) AndAlso (Not String.IsNullOrEmpty(other.Name)) AndAlso (Not String.IsNullOrEmpty(Me.Type)) AndAlso (Not String.IsNullOrEmpty(other.Type)) Then
+            Return Me.Name.Equals(other.Name) AndAlso Me.Type.Equals(other.Type)
+        ElseIf (Not String.IsNullOrEmpty(Me.Type)) AndAlso (Not String.IsNullOrEmpty(other.Type)) Then
+            Return Me.Type.Equals(other.Type)
+        Else
+            Return False
+        End If
     End Function
     Public Overrides Function GetHashCode() As Integer
         Return String.Format("{0}{1}", Me.Name, Me.Type).GetHashCode

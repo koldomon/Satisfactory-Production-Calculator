@@ -7,9 +7,11 @@ Imports System.Runtime.CompilerServices
 
     Private _Recipe As ResourceView
     Private _ItemsPerMinute As Double
-    Private _Productions As New List(Of ProductionView)
     Private _Resources As New List(Of ResourceView)
+    Private _Productions As New List(Of ProductionView)
+    Private _AdditionalProductions As New List(Of ProductionView)
     Private _AllProductions As New List(Of ProductionView)
+    Private _AllAdditionalItems As New List(Of ProductionView)
     Private _IsSelected As Boolean
 
     Protected Friend MainView As MainViewModel
@@ -69,6 +71,15 @@ Imports System.Runtime.CompilerServices
             Return _Productions
         End Get
     End Property
+    Public ReadOnly Property AdditionalItems As List(Of ProductionView)
+        Get
+            If (_AdditionalProductions Is Nothing) OrElse (Not _AdditionalProductions.Any) Then
+                _AdditionalProductions = BaseObj.AdditionalItems.Select(Function(x) New ProductionView(MainView, x)).ToList
+            End If
+
+            Return _AdditionalProductions
+        End Get
+    End Property
     Public ReadOnly Property Resources As List(Of ResourceView)
         Get
             If (_Resources Is Nothing) OrElse (Not _Resources.Any) Then
@@ -88,6 +99,19 @@ Imports System.Runtime.CompilerServices
                 _AllProductions = myReturn
             End If
             Return _AllProductions
+        End Get
+    End Property
+    Public ReadOnly Property AllAdditionalItems As List(Of ProductionView)
+        Get
+            If (_AllAdditionalItems Is Nothing) OrElse (Not _AllAdditionalItems.Any) Then
+                _AllAdditionalItems = New List(Of ProductionView)
+
+                If Me.AdditionalItems.Count = 0 Then Return _AllAdditionalItems
+
+                Dim myReturn As List(Of ProductionView) = GetAllAdditionalItems()
+                _AllAdditionalItems = myReturn
+            End If
+            Return _AllAdditionalItems
         End Get
     End Property
 
@@ -167,6 +191,20 @@ Imports System.Runtime.CompilerServices
                        Group By Recipe = myProduction.Recipe Into Productions = Group
                        Order By Recipe.Name
                        Select New ProductionView() With {._Recipe = New ResourceView(Recipe), .ItemsPerMinute = Productions.Sum(Function(x) x.ItemsPerMinute)}
+        Dim myReturn = myGroups.OrderBy(Function(x) x.Recipe.Name).ToList
+        Return myReturn
+    End Function
+    Private Function GetAllAdditionalItems() As List(Of ProductionView)
+        Dim myTempList As New List(Of Production)
+        myTempList.AddRange(Me.AdditionalItems.Select(Function(x) ToProduction(x)))
+        For Each myProduction In Me.Productions
+            myTempList.AddRange(myProduction.AdditionalItems.Select(Function(x) ToProduction(x)))
+        Next
+
+        Dim myGroups = From myAdditionalProduction In myTempList
+                       Group By Recipe = myAdditionalProduction.Recipe Into AdditionalProductions = Group
+                       Order By Recipe.Name
+                       Select New ProductionView() With {._Recipe = New ResourceView(Recipe), .ItemsPerMinute = AdditionalProductions.Sum(Function(x) x.ItemsPerMinute)}
         Dim myReturn = myGroups.OrderBy(Function(x) x.Recipe.Name).ToList
         Return myReturn
     End Function

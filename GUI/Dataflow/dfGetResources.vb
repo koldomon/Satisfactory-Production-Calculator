@@ -132,7 +132,7 @@ Public Class GetResources_FromGamepedia_DataFlow
             myReturn.ProductionPerMachine = myOutputs(0).Item2
         End If
         If (myOutputs.Count > 1) Then
-            myReturn.AdditionalProductions = myOutputs.Skip(1).Select(Function(x) New Resource With {
+            myReturn.AdditionalResources = myOutputs.Skip(1).Select(Function(x) New Resource With {
                                                                                  .Type = x.Item1,
                                                                                  .ItemsPerMinute = x.Item2
                                                                                  }).ToList

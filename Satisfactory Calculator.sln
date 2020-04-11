@@ -8,7 +8,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UnitTesting", "UnitTesting\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{1E9FB516-B444-442A-9BAB-6E086AC3D5F5}"
 	ProjectSection(SolutionItems) = preProject
-		builds\SatisProdCalc_0-2-2004-169.zip = builds\SatisProdCalc_0-2-2004-169.zip
+		builds\SatisfactoryProductionCalculator_0_2_2004_170.zip = builds\SatisfactoryProductionCalculator_0_2_2004_170.zip
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B8D3F836-BC17-4C32-85FC-8B56F4CB17F9}"

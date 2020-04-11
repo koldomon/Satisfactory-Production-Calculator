@@ -64,10 +64,10 @@ Imports System.Runtime.CompilerServices
         End Get
     End Property
 
-    Public ReadOnly Property AdditionalProductions As List(Of ResourceView)
+    Public ReadOnly Property AdditionalItems As List(Of ResourceView)
         Get
-            If BaseObject.AdditionalProductions IsNot Nothing Then
-                Return BaseObject.AdditionalProductions.Select(Function(x) New ResourceView(x)).ToList
+            If BaseObject.AdditionalResources IsNot Nothing Then
+                Return BaseObject.AdditionalResources.Select(Function(x) New ResourceView(x)).ToList
             End If
 
             Return Nothing

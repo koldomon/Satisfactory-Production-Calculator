@@ -183,6 +183,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <GroupBox
                 Grid.Row="0"
@@ -414,6 +415,41 @@
                             Header="Prod.Rate">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <GroupBox
+                Grid.Row="4"
+                Header="Additional Productions">
+                <DataGrid
+                    Grid.Row="1"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    CanUserDeleteRows="False"
+                    CanUserResizeRows="False"
+                    ColumnWidth="SizeToHeader"
+                    ItemsSource="{Binding SelectedProduction.AllAdditionalItems, Mode=OneWay}"
+                    SelectionMode="Extended">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="Auto"
+                            Binding="{Binding Recipe.Type, Mode=OneWay}"
+                            Header="Type" />
+                        <DataGridTextColumn
+                            Width="Auto"
+                            Binding="{Binding Recipe.Category, Mode=OneWay}"
+                            Header="Category" />
+                        <DataGridTextColumn
+                            Width="Auto"
+                            Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00\}}"
+                            Header="Items/min">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="0,0,3,0" />
                                     <Setter Property="TextAlignment" Value="Right" />
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
