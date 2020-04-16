@@ -4,8 +4,13 @@ Imports System.Windows.Threading
 Class MainWindow
     Private Sub AddProduction_Click(sender As Object, e As RoutedEventArgs)
         Dim myViewModel = DirectCast(Me.DataContext, MainViewModel)
-        Dim myProduction = myViewModel.AddProduction(cbAddRecipe.SelectedItem, txtAddItemsPerMinute.Text)
-        myProduction.IsSelected = True
+
+        Dim myItemsPerMinuteString = txtAddItemsPerMinute.Text.Trim
+        Dim myItemsPerMinuteDouble As Double
+        If Double.TryParse(myItemsPerMinuteString, myItemsPerMinuteDouble) Then
+            Dim myProduction = myViewModel.AddProduction(cbAddRecipe.SelectedItem, myItemsPerMinuteDouble)
+            myProduction.IsSelected = True
+        End If
     End Sub
     Private Sub SelectedProduction_Changed(sender As Object, e As RoutedPropertyChangedEventArgs(Of Object))
         DirectCast(Me.DataContext, MainViewModel).SelectedProduction = e.NewValue

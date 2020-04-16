@@ -17,221 +17,439 @@
             <Setter Property="MinWidth" Value="3" />
         </Style>
     </Window.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="20*" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="35*" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="35*" />
-        </Grid.ColumnDefinitions>
-        <Menu
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="7">
-            <MenuItem Header="File">
-                <MenuItem
-                    Command="{x:Static ApplicationCommands.Open}"
-                    Header="Open" />
-                <MenuItem
-                    Command="{x:Static ApplicationCommands.Save}"
-                    Header="Save" />
-                <Separator />
-                <MenuItem
-                    Command="{Binding SaveSettingsCommand}"
-                    Header="Save Settings" />
-            </MenuItem>
-            <MenuItem Header="Update">
-                <MenuItem
-                    Command="{Binding GetResources_FromGamepedia_Command}"
-                    CommandParameter="{Binding ElementName=window, Mode=OneWay}"
-                    Header="Get Resources (Gamepedia)" />
-            </MenuItem>
-        </Menu>
-        <GroupBox
-            Grid.Row="1"
-            Grid.Column="0"
-            Header="Productions">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition
-                            Width="Auto"
-                            MinWidth="25" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <ComboBox
-                        x:Name="cbAddRecipe"
-                        Grid.Column="0"
-                        DisplayMemberPath="DisplayName"
-                        ItemsSource="{Binding OrderedRecipes}" />
-                    <TextBox
-                        x:Name="txtAddItemsPerMinute"
-                        Grid.Column="1" />
-                    <Button
-                        Grid.Column="2"
-                        Click="AddProduction_Click"
-                        Content="Add" />
-                </Grid>
-                <DataGrid
-                    x:Name="dataGrid"
-                    Grid.Row="1"
-                    AutoGenerateColumns="False"
-                    CanUserAddRows="False"
-                    CanUserReorderColumns="False"
-                    CanUserResizeRows="False"
-                    ColumnWidth="SizeToHeader"
-                    ItemsSource="{Binding Productions, Mode=OneWay}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="*"
-                            Binding="{Binding Recipe.Name, Mode=OneWay}"
-                            Header="Name"
-                            IsReadOnly="True" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding Recipe.Type, Mode=OneWay}"
-                            Header="Type"
-                            IsReadOnly="True" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding ItemsPerMinute, StringFormat=\{0:0.####\}}"
-                            Header="Items/min">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="0,0,5,0" />
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-        </GroupBox>
-        <GridSplitter
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Stretch"
-            ResizeBehavior="PreviousAndNext"
-            ResizeDirection="Columns"
-            ShowsPreview="True" />
-        <GroupBox
-            Grid.Row="1"
-            Grid.Column="2"
-            Header="Production">
-            <TreeView
-                x:Name="treeView"
-                ItemsSource="{Binding Productions}"
-                SelectedItemChanged="SelectedProduction_Changed">
-                <TreeView.Resources>
-                    <HierarchicalDataTemplate
-                        DataType="{x:Type local:ProductionView}"
-                        ItemsSource="{Binding Productions}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                d:DataContext="{d:DesignInstance {x:Type local:ProductionView}}"
-                                Text="{Binding Recipe.Name, Mode=OneWay}" />
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                d:DataContext="{d:DesignInstance {x:Type local:ProductionView}}"
-                                FontSize="10"
-                                Text="{Binding Recipe.Type, StringFormat=' (\{0\})'}" />
-                        </StackPanel>
-                    </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type local:ResourceView}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                HorizontalAlignment="Stretch"
-                                d:DataContext="{d:DesignInstance {x:Type local:ResourceView}}"
-                                Text="{Binding Name}" />
-                            <TextBlock
-                                HorizontalAlignment="Stretch"
-                                d:DataContext="{d:DesignInstance {x:Type local:ResourceView}}"
-                                Text="{Binding Type, StringFormat=' (\{0\})'}" />
-                        </StackPanel>
-                    </HierarchicalDataTemplate>
-                </TreeView.Resources>
-            </TreeView>
-        </GroupBox>
-        <GridSplitter
-            Grid.Row="1"
-            Grid.Column="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Stretch"
-            ResizeBehavior="PreviousAndNext"
-            ResizeDirection="Columns"
-            ShowsPreview="True" />
-        <Grid
-            Grid.Row="1"
-            Grid.Column="4">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <GroupBox
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="35*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="35*" />
+            </Grid.ColumnDefinitions>
+            <Menu
                 Grid.Row="0"
-                Header="Information">
+                Grid.Column="0"
+                Grid.ColumnSpan="7">
+                <MenuItem Header="File">
+                    <MenuItem
+                        Command="{x:Static ApplicationCommands.Open}"
+                        Header="Open" />
+                    <MenuItem
+                        Command="{x:Static ApplicationCommands.Save}"
+                        Header="Save" />
+                    <Separator />
+                    <MenuItem
+                        Command="{Binding SaveSettingsCommand}"
+                        Header="Save Settings" />
+                </MenuItem>
+                <MenuItem Header="Update">
+                    <MenuItem
+                        Command="{Binding GetResources_FromGamepedia_Command}"
+                        CommandParameter="{Binding ElementName=window, Mode=OneWay}"
+                        Header="Get Resources (Gamepedia)" />
+                </MenuItem>
+            </Menu>
+            <GroupBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Header="Productions">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="20*"
-                            MinWidth="95" />
-                        <ColumnDefinition
-                            Width="10*"
-                            MinWidth="75" />
-                        <ColumnDefinition Width="70*" />
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Text="Production/min.:" />
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HorizontalAlignment="Stretch"
-                        Text="{Binding SelectedProduction.Recipe.ProductionRate, Mode=OneWay, StringFormat='\{0:0.####\}'}"
-                        TextAlignment="Left" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition
+                                Width="Auto"
+                                MinWidth="25" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox
+                            x:Name="cbAddRecipe"
+                            Grid.Column="0"
+                            DisplayMemberPath="DisplayName"
+                            ItemsSource="{Binding OrderedRecipes}" />
+                        <TextBox
+                            x:Name="txtAddItemsPerMinute"
+                            Grid.Column="1" />
+                        <Button
+                            Grid.Column="2"
+                            Click="AddProduction_Click"
+                            Content="Add" />
+                    </Grid>
                     <DataGrid
-                        Grid.Row="0"
-                        Grid.RowSpan="3 "
-                        Grid.Column="2"
+                        x:Name="dataGrid"
+                        Grid.Row="1"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        CanUserReorderColumns="False"
+                        CanUserResizeRows="False"
+                        ColumnWidth="SizeToHeader"
+                        ItemsSource="{Binding Productions, Mode=OneWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Recipe.Name, Mode=OneWay}"
+                                Header="Name"
+                                IsReadOnly="True" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding Recipe.Type, Mode=OneWay}"
+                                Header="Type"
+                                IsReadOnly="True" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding ItemsPerMinute, StringFormat=\{0:0.####\}}"
+                                Header="Items/min">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="0,0,5,0" />
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </GroupBox>
+            <GridSplitter
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Stretch"
+                ResizeBehavior="PreviousAndNext"
+                ResizeDirection="Columns"
+                ShowsPreview="True" />
+            <GroupBox
+                Grid.Row="1"
+                Grid.Column="2"
+                Header="Production">
+                <TreeView
+                    x:Name="treeView"
+                    ItemsSource="{Binding Productions}"
+                    SelectedItemChanged="SelectedProduction_Changed">
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate
+                            DataType="{x:Type local:ProductionView}"
+                            ItemsSource="{Binding Productions}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    d:DataContext="{d:DesignInstance {x:Type local:ProductionView}}"
+                                    Text="{Binding Recipe.Name, Mode=OneWay}" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    d:DataContext="{d:DesignInstance {x:Type local:ProductionView}}"
+                                    FontSize="10"
+                                    Text="{Binding Recipe.Type, StringFormat=' (\{0\})'}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type local:ResourceView}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    HorizontalAlignment="Stretch"
+                                    d:DataContext="{d:DesignInstance {x:Type local:ResourceView}}"
+                                    Text="{Binding Name}" />
+                                <TextBlock
+                                    HorizontalAlignment="Stretch"
+                                    d:DataContext="{d:DesignInstance {x:Type local:ResourceView}}"
+                                    Text="{Binding Type, StringFormat=' (\{0\})'}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.Resources>
+                </TreeView>
+            </GroupBox>
+            <GridSplitter
+                Grid.Row="1"
+                Grid.Column="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Stretch"
+                ResizeBehavior="PreviousAndNext"
+                ResizeDirection="Columns"
+                ShowsPreview="True" />
+            <Grid
+                Grid.Row="1"
+                Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <GroupBox
+                    Grid.Row="0"
+                    Header="Information">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="20*"
+                                MinWidth="95" />
+                            <ColumnDefinition
+                                Width="10*"
+                                MinWidth="75" />
+                            <ColumnDefinition Width="70*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Production/min.:" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Text="{Binding SelectedProduction.Recipe.ProductionRate, Mode=OneWay, StringFormat='\{0:0.####\}'}"
+                            TextAlignment="Left" />
+                        <DataGrid
+                            Grid.Row="0"
+                            Grid.RowSpan="3 "
+                            Grid.Column="2"
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False"
+                            CanUserResizeRows="False"
+                            ColumnWidth="SizeToHeader"
+                            ItemsSource="{Binding SelectedProduction.Recipe.Resources, Mode=OneWay}"
+                            SelectionMode="Extended">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding Type, Mode=OneWay}"
+                                    Header="Type" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.0\}}"
+                                    Header="Items/min">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="0,0,3,0" />
+                                            <Setter Property="TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Production Costs:" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Text="{Binding SelectedProduction.Recipe.ProductionCost, Mode=OneWay, StringFormat='\{0:0.######\}'}"
+                            TextAlignment="Left" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="Category:" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding SelectedProduction.Recipe.Category, Mode=OneWay}"
+                            TextAlignment="Left" />
+                    </Grid>
+                </GroupBox>
+                <GroupBox
+                    Grid.Row="1"
+                    Header="Production">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*" />
+                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="10*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            Grid.Column="0"
+                            IsReadOnly="True"
+                            Text="{Binding SelectedProduction.Recipe.Name, Mode=OneWay}" />
+                        <TextBox
+                            Grid.Column="1"
+                            FontSize="10"
+                            IsReadOnly="True"
+                            Text="{Binding SelectedProduction.Recipe.Type, Mode=OneWay}" />
+                        <TextBox
+                            Grid.Column="2"
+                            IsReadOnly="True"
+                            Text="{Binding SelectedProduction.ItemsPerMinute, Mode=OneWay, StringFormat='\{0:0.####\}/min.'}"
+                            TextAlignment="Right" />
+                        <TextBox
+                            Grid.Column="3"
+                            Margin="0"
+                            IsReadOnly="True"
+                            Text="{Binding SelectedProduction.RequiredMachines, Mode=OneWay, StringFormat='\{0:0\} Machines'}"
+                            TextAlignment="Right" />
+                        <TextBox
+                            Grid.Column="4"
+                            IsReadOnly="True"
+                            Text="{Binding SelectedProduction.ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
+                            TextAlignment="Right" />
+                    </Grid>
+                </GroupBox>
+                <GroupBox
+                    Grid.Row="2"
+                    Header="Required Resources">
+                    <DataGrid
+                        Grid.Row="1"
                         AutoGenerateColumns="False"
                         CanUserAddRows="False"
                         CanUserDeleteRows="False"
                         CanUserResizeRows="False"
                         ColumnWidth="SizeToHeader"
-                        ItemsSource="{Binding SelectedProduction.Recipe.Resources, Mode=OneWay}"
+                        ItemsSource="{Binding SelectedProduction.Productions, Mode=OneWay}"
+                        SelectionMode="Extended">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Recipe.Name, Mode=OneWay}"
+                                Header="Name" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding Recipe.Type, Mode=OneWay}"
+                                Header="Type" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding Recipe.Category, Mode=OneWay}"
+                                Header="Category" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00\}}"
+                                Header="Items/min">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="0,0,3,0" />
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding RequiredMachines, Mode=OneWay, StringFormat=\{0:0\}}"
+                                Header="Machines">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="0,0,3,0" />
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
+                                Header="Prod.Rate">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="0,0,3,0" />
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <GroupBox
+                    Grid.Row="3"
+                    Header="Total Resources">
+                    <DataGrid
+                        Grid.Row="1"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        CanUserDeleteRows="False"
+                        CanUserResizeRows="False"
+                        ColumnWidth="SizeToHeader"
+                        ItemsSource="{Binding SelectedProduction.AllProductions, Mode=OneWay}"
+                        SelectionMode="Extended">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding Recipe.Name, Mode=OneWay}"
+                                Header="Name" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding Recipe.Type, Mode=OneWay}"
+                                Header="Type" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding Recipe.Category, Mode=OneWay}"
+                                Header="Category" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00\}}"
+                                Header="Items/min">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="0,0,3,0" />
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding RequiredMachines, Mode=OneWay, StringFormat=\{0:0\}}"
+                                Header="Machines">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="0,0,3,0" />
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
+                                Header="Prod.Rate">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <GroupBox
+                    Grid.Row="4"
+                    Header="Additional Productions">
+                    <DataGrid
+                        Grid.Row="1"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        CanUserDeleteRows="False"
+                        CanUserResizeRows="False"
+                        ColumnWidth="SizeToHeader"
+                        ItemsSource="{Binding SelectedProduction.AllAdditionalItems, Mode=OneWay}"
                         SelectionMode="Extended">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="Auto"
-                                Binding="{Binding Type, Mode=OneWay}"
+                                Binding="{Binding Recipe.Type, Mode=OneWay}"
                                 Header="Type" />
                             <DataGridTextColumn
                                 Width="Auto"
-                                Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.0\}}"
+                                Binding="{Binding Recipe.Category, Mode=OneWay}"
+                                Header="Category" />
+                            <DataGridTextColumn
+                                Width="Auto"
+                                Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00\}}"
                                 Header="Items/min">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -242,389 +460,176 @@
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <TextBlock
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Text="Production Costs:" />
-                    <TextBlock
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HorizontalAlignment="Stretch"
-                        Text="{Binding SelectedProduction.Recipe.ProductionCost, Mode=OneWay, StringFormat='\{0:0.######\}'}"
-                        TextAlignment="Left" />
-                    <TextBlock
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Text="Category:" />
-                    <TextBlock
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Text="{Binding SelectedProduction.Recipe.Category, Mode=OneWay}"
-                        TextAlignment="Left" />
-                </Grid>
-            </GroupBox>
+                </GroupBox>
+            </Grid>
+            <GridSplitter
+                Grid.Row="1"
+                Grid.Column="5"
+                Width="Auto"
+                ResizeBehavior="PreviousAndNext"
+                ResizeDirection="Columns"
+                ShowsPreview="True" />
             <GroupBox
                 Grid.Row="1"
-                Header="Production">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40*" />
-                        <ColumnDefinition Width="25*" />
-                        <ColumnDefinition Width="10*" />
-                        <ColumnDefinition Width="15*" />
-                        <ColumnDefinition Width="10*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBox
-                        Grid.Column="0"
-                        IsReadOnly="True"
-                        Text="{Binding SelectedProduction.Recipe.Name, Mode=OneWay}" />
-                    <TextBox
-                        Grid.Column="1"
-                        FontSize="10"
-                        IsReadOnly="True"
-                        Text="{Binding SelectedProduction.Recipe.Type, Mode=OneWay}" />
-                    <TextBox
-                        Grid.Column="2"
-                        IsReadOnly="True"
-                        Text="{Binding SelectedProduction.ItemsPerMinute, Mode=OneWay, StringFormat='\{0:0.####\}/min.'}"
-                        TextAlignment="Right" />
-                    <TextBox
-                        Grid.Column="3"
-                        Margin="0"
-                        IsReadOnly="True"
-                        Text="{Binding SelectedProduction.RequiredMachines, Mode=OneWay, StringFormat='\{0:0\} Machines'}"
-                        TextAlignment="Right" />
-                    <TextBox
-                        Grid.Column="4"
-                        IsReadOnly="True"
-                        Text="{Binding SelectedProduction.ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
-                        TextAlignment="Right" />
-                </Grid>
-            </GroupBox>
-            <GroupBox
-                Grid.Row="2"
-                Header="Required Resources">
-                <DataGrid
-                    Grid.Row="1"
-                    AutoGenerateColumns="False"
-                    CanUserAddRows="False"
-                    CanUserDeleteRows="False"
-                    CanUserResizeRows="False"
-                    ColumnWidth="SizeToHeader"
-                    ItemsSource="{Binding SelectedProduction.Productions, Mode=OneWay}"
-                    SelectionMode="Extended">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="*"
-                            Binding="{Binding Recipe.Name, Mode=OneWay}"
-                            Header="Name" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding Recipe.Type, Mode=OneWay}"
-                            Header="Type" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding Recipe.Category, Mode=OneWay}"
-                            Header="Category" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00\}}"
-                            Header="Items/min">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="0,0,3,0" />
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding RequiredMachines, Mode=OneWay, StringFormat=\{0:0\}}"
-                            Header="Machines">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="0,0,3,0" />
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
-                            Header="Prod.Rate">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="0,0,3,0" />
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </GroupBox>
-            <GroupBox
-                Grid.Row="3"
-                Header="Total Resources">
-                <DataGrid
-                    Grid.Row="1"
-                    AutoGenerateColumns="False"
-                    CanUserAddRows="False"
-                    CanUserDeleteRows="False"
-                    CanUserResizeRows="False"
-                    ColumnWidth="SizeToHeader"
-                    ItemsSource="{Binding SelectedProduction.AllProductions, Mode=OneWay}"
-                    SelectionMode="Extended">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="*"
-                            Binding="{Binding Recipe.Name, Mode=OneWay}"
-                            Header="Name" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding Recipe.Type, Mode=OneWay}"
-                            Header="Type" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding Recipe.Category, Mode=OneWay}"
-                            Header="Category" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00\}}"
-                            Header="Items/min">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="0,0,3,0" />
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding RequiredMachines, Mode=OneWay, StringFormat=\{0:0\}}"
-                            Header="Machines">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="0,0,3,0" />
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
-                            Header="Prod.Rate">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </GroupBox>
-            <GroupBox
-                Grid.Row="4"
-                Header="Additional Productions">
-                <DataGrid
-                    Grid.Row="1"
-                    AutoGenerateColumns="False"
-                    CanUserAddRows="False"
-                    CanUserDeleteRows="False"
-                    CanUserResizeRows="False"
-                    ColumnWidth="SizeToHeader"
-                    ItemsSource="{Binding SelectedProduction.AllAdditionalItems, Mode=OneWay}"
-                    SelectionMode="Extended">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding Recipe.Type, Mode=OneWay}"
-                            Header="Type" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding Recipe.Category, Mode=OneWay}"
-                            Header="Category" />
-                        <DataGridTextColumn
-                            Width="Auto"
-                            Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00\}}"
-                            Header="Items/min">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="0,0,3,0" />
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                Grid.Column="6"
+                Header="Recipes">
+                <TabControl>
+                    <TabItem Header="All Recipes">
+                        <DataGrid
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False"
+                            CanUserResizeRows="False"
+                            ColumnWidth="SizeToHeader"
+                            ItemsSource="{Binding OrderedRecipes}"
+                            SelectionMode="Extended">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn
+                                    Width="Auto"
+                                    Binding="{Binding IsAlternativeRecipe, Mode=OneWay}"
+                                    Header="Alt"
+                                    IsReadOnly="True" />
+                                <DataGridCheckBoxColumn
+                                    Width="Auto"
+                                    Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"
+                                    Header="Act" />
+                                <DataGridTextColumn
+                                    Width="*"
+                                    Binding="{Binding Name, Mode=OneWay}"
+                                    Header="Name" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding Type, Mode=OneWay}"
+                                    Header="Type" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding Category, Mode=OneWay}"
+                                    Header="Category" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
+                                    Header="Prod.Rate">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="0,0,3,0" />
+                                            <Setter Property="TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
+                                    Header="Resources">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="0,0,3,0" />
+                                            <Setter Property="TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Alternate Recipes">
+                        <DataGrid
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False"
+                            CanUserResizeRows="False"
+                            ColumnWidth="SizeToHeader"
+                            ItemsSource="{Binding AlternateRecipes}"
+                            SelectionMode="Extended">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn
+                                    Width="Auto"
+                                    Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"
+                                    Header="Active" />
+                                <DataGridTextColumn
+                                    Width="*"
+                                    Binding="{Binding Name, Mode=OneWay}"
+                                    Header="Name" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding Type, Mode=OneWay}"
+                                    Header="Type" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding Category, Mode=OneWay}"
+                                    Header="Category" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
+                                    Header="Prod.Rate">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="0,0,3,0" />
+                                            <Setter Property="TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
+                                    Header="Resources">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="0,0,3,0" />
+                                            <Setter Property="TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Default Recipes">
+                        <DataGrid
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False"
+                            CanUserResizeRows="False"
+                            ColumnWidth="SizeToHeader"
+                            ItemsSource="{Binding DefaultRecipes}"
+                            SelectionMode="Extended">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="*"
+                                    Binding="{Binding Name, Mode=OneWay}"
+                                    Header="Name" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding Type, Mode=OneWay}"
+                                    Header="Type" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding Category, Mode=OneWay}"
+                                    Header="Category" />
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
+                                    Header="Prod.Rate">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="0,0,3,0" />
+                                            <Setter Property="TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn
+                                    Width="Auto"
+                                    Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
+                                    Header="Resources">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="0,0,3,0" />
+                                            <Setter Property="TextAlignment" Value="Right" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
             </GroupBox>
         </Grid>
-        <GridSplitter
-            Grid.Row="1"
-            Grid.Column="5"
-            Width="Auto"
-            ResizeBehavior="PreviousAndNext"
-            ResizeDirection="Columns"
-            ShowsPreview="True" />
-        <GroupBox
-            Grid.Row="1"
-            Grid.Column="6"
-            Header="Recipes">
-            <TabControl>
-                <TabItem Header="All Recipes">
-                    <DataGrid
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False"
-                        CanUserDeleteRows="False"
-                        CanUserResizeRows="False"
-                        ColumnWidth="SizeToHeader"
-                        ItemsSource="{Binding OrderedRecipes}"
-                        SelectionMode="Extended">
-                        <DataGrid.Columns>
-                            <DataGridCheckBoxColumn
-                                Width="Auto"
-                                Binding="{Binding IsAlternativeRecipe, Mode=OneWay}"
-                                Header="Alt"
-                                IsReadOnly="True" />
-                            <DataGridCheckBoxColumn
-                                Width="Auto"
-                                Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"
-                                Header="Act" />
-                            <DataGridTextColumn
-                                Width="*"
-                                Binding="{Binding Name, Mode=OneWay}"
-                                Header="Name" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding Type, Mode=OneWay}"
-                                Header="Type" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding Category, Mode=OneWay}"
-                                Header="Category" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
-                                Header="Prod.Rate">
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Margin" Value="0,0,3,0" />
-                                        <Setter Property="TextAlignment" Value="Right" />
-                                    </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
-                                Header="Resources">
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Margin" Value="0,0,3,0" />
-                                        <Setter Property="TextAlignment" Value="Right" />
-                                    </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </TabItem>
-                <TabItem Header="Alternate Recipes">
-                    <DataGrid
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False"
-                        CanUserDeleteRows="False"
-                        CanUserResizeRows="False"
-                        ColumnWidth="SizeToHeader"
-                        ItemsSource="{Binding AlternateRecipes}"
-                        SelectionMode="Extended">
-                        <DataGrid.Columns>
-                            <DataGridCheckBoxColumn
-                                Width="Auto"
-                                Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"
-                                Header="Active" />
-                            <DataGridTextColumn
-                                Width="*"
-                                Binding="{Binding Name, Mode=OneWay}"
-                                Header="Name" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding Type, Mode=OneWay}"
-                                Header="Type" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding Category, Mode=OneWay}"
-                                Header="Category" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
-                                Header="Prod.Rate">
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Margin" Value="0,0,3,0" />
-                                        <Setter Property="TextAlignment" Value="Right" />
-                                    </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
-                                Header="Resources">
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Margin" Value="0,0,3,0" />
-                                        <Setter Property="TextAlignment" Value="Right" />
-                                    </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </TabItem>
-                <TabItem Header="Default Recipes">
-                    <DataGrid
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False"
-                        CanUserDeleteRows="False"
-                        CanUserResizeRows="False"
-                        ColumnWidth="SizeToHeader"
-                        ItemsSource="{Binding DefaultRecipes}"
-                        SelectionMode="Extended">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn
-                                Width="*"
-                                Binding="{Binding Name, Mode=OneWay}"
-                                Header="Name" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding Type, Mode=OneWay}"
-                                Header="Type" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding Category, Mode=OneWay}"
-                                Header="Category" />
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
-                                Header="Prod.Rate">
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Margin" Value="0,0,3,0" />
-                                        <Setter Property="TextAlignment" Value="Right" />
-                                    </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn
-                                Width="Auto"
-                                Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
-                                Header="Resources">
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Margin" Value="0,0,3,0" />
-                                        <Setter Property="TextAlignment" Value="Right" />
-                                    </Style>
-                                </DataGridTextColumn.ElementStyle>
-                            </DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </TabItem>
-            </TabControl>
-        </GroupBox>
     </Grid>
 </Window>
