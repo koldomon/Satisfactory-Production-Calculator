@@ -24,8 +24,8 @@
     <UpdatePeriodically>true</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <InstallUrl>https://github.com/koldomon/Satisfactory-Production-Calculator/tree/master/builds/</InstallUrl>
-    <UpdateUrl>https://github.com/koldomon/Satisfactory-Production-Calculator/tree/master/builds/</UpdateUrl>
+    <InstallUrl>https://github.com/koldomon/Satisfactory-Production-Calculator/raw/master/builds/</InstallUrl>
+    <UpdateUrl>https://github.com/koldomon/Satisfactory-Production-Calculator/raw/master/builds/</UpdateUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Satisfactory Production Calculator</ProductName>
     <PublisherName>koldomon</PublisherName>
