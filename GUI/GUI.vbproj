@@ -13,19 +13,17 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <AssemblyVersion>0.2.2004.172</AssemblyVersion>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\markus.POWERLAB\source\repos\Satisfactory Calculator\builds\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>true</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <InstallUrl>https://raw.githubusercontent.com/koldomon/Satisfactory-Production-Calculator/master/builds/</InstallUrl>
-    <UpdateUrl>https://raw.githubusercontent.com/koldomon/Satisfactory-Production-Calculator/master/builds/</UpdateUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Satisfactory Production Calculator</ProductName>
     <PublisherName>koldomon</PublisherName>
