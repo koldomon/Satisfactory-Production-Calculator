@@ -12,7 +12,7 @@
     <MyType>Custom</MyType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>0.2.2004.172</AssemblyVersion>
+    <AssemblyVersion>0.2.2004.173</AssemblyVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\markus.POWERLAB\source\repos\Satisfactory Calculator\builds\</PublishUrl>
     <Install>true</Install>
@@ -28,10 +28,12 @@
     <ProductName>Satisfactory Production Calculator</ProductName>
     <PublisherName>koldomon</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>172</ApplicationRevision>
-    <ApplicationVersion>0.2.2004.172</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
+    <DisallowUrlActivation>true</DisallowUrlActivation>
+    <ApplicationRevision>173</ApplicationRevision>
+    <ApplicationVersion>0.2.2004.173</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
@@ -190,7 +192,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="sources\SatisfactoryRecipes.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +206,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="sources\SatisfactoryRecipes.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
