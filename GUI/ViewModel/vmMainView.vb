@@ -301,7 +301,7 @@ Public Class MainViewModel
         Dim mySatisResource As New SatifactoryResources
         mySatisResource.Recipes = myRecipes.Distinct().OrderBy(Function(x) x.Name).ToList
 
-        My.Application.WriteToXML(Of SatifactoryResources)(mySatisResource, IO.Path.Combine(My.Application.Info.DirectoryPath, "Sources", "SatisfactoryRecipes.xml"))
+        My.Application.WriteToXML(Of SatifactoryResources)(mySatisResource, IO.Path.Combine(My.Application.Info.DirectoryPath, "sources", "SatisfactoryRecipes.xml"))
 
         GC.Collect()
         GC.WaitForFullGCComplete()

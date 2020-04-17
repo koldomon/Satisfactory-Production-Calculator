@@ -157,7 +157,7 @@ Public Class GetResources_FromGamepedia_DataFlow
             For Each myInputNode In myInputNodes
                 Dim myType = GetNodeValue(myInputNode, "./div/div/div")
                 If (Not String.IsNullOrEmpty(myType)) Then
-                    Dim myCount = GetNodeDoubleValue(myInputNode, "./span")
+                    Dim myCount = GetNodeDoubleValue(myInputNode, "./div[2]")
                     If (myCount = 0) Then myCount = GetNodeDoubleValue(myInputNode, "./div/div")
 
                     myReturn.Add(New Resource With {
@@ -180,7 +180,9 @@ Public Class GetResources_FromGamepedia_DataFlow
             If (myInputNodes IsNot Nothing) Then
                 For Each myInputNode In myInputNodes
                     Dim myName = GetNodeValue(myInputNode, "./div/div/div")
-                    Dim myCount = GetNodeDoubleValue(myInputNode, "./span")
+                    Dim myCount = GetNodeDoubleValue(myInputNode, "./div[2]")
+                    If myCount = 0 Then myCount = GetNodeDoubleValue(myInputNode, "./div/div")
+
                     myReturn.Add(Tuple.Create(Of String, Double)(myName, myCount))
                 Next
             End If
@@ -201,7 +203,7 @@ Public Class GetResources_FromGamepedia_DataFlow
             Double.TryParse(myValue, Globalization.NumberStyles.Float, Globalization.CultureInfo.GetCultureInfo("en").NumberFormat, myReturn)
         End If
 
-            Return myReturn
+        Return myReturn
     End Function
     Private Function GetNodeValue(thisNode As HtmlNode, thisXPath As String) As String
         Dim myNode = thisNode.SelectSingleNode(thisXPath)

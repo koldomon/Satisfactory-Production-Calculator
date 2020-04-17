@@ -56,10 +56,10 @@ Class Application
 
 
         glbViewModel = myNewViewModel
-        'glbForm = New MainWindow
+        glbForm = New MainWindow
         glbForm.DataContext = glbViewModel
         glbForm.Show()
-        'myOldForm.Close()
+        myOldForm.Close()
     End Sub
 
     Private Function LoadRecipes() As List(Of Resource)
