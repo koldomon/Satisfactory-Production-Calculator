@@ -72,6 +72,8 @@ Class Application
     End Function
 
     Friend Sub LoadProductions(thisFile As String)
+        If String.IsNullOrEmpty(thisFile) Then Exit Sub
+
         Dim myStore = ReadFromXML(Of SatifactoryResources)(thisFile)
 
         If (myStore IsNot Nothing) AndAlso (myStore.Productions IsNot Nothing) AndAlso (myStore.Productions.Any) Then
