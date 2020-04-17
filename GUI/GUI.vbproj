@@ -30,7 +30,6 @@
     <ProductName>Satisfactory Production Calculator</ProductName>
     <PublisherName>koldomon</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <DisallowUrlActivation>true</DisallowUrlActivation>
     <ApplicationRevision>172</ApplicationRevision>
     <ApplicationVersion>0.2.2004.172</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
