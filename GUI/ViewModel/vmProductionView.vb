@@ -53,6 +53,7 @@ Imports System.Runtime.CompilerServices
         Set
             If (BaseObj IsNot Nothing) Then
                 BaseObj.ItemsPerMinute = Value
+                MainView.HasChanged = True
                 MainView.ResetProductions()
             Else
                 _ItemsPerMinute = Value
@@ -65,7 +66,11 @@ Imports System.Runtime.CompilerServices
     Public ReadOnly Property Productions As List(Of ProductionView)
         Get
             If (_Productions Is Nothing) OrElse (Not _Productions.Any) Then
-                _Productions = BaseObj.Productions.Select(Function(x) New ProductionView(MainView, x)).ToList
+                If (BaseObj IsNot Nothing) AndAlso (BaseObj.Productions IsNot Nothing) Then
+                    _Productions = BaseObj.Productions.Select(Function(x) New ProductionView(MainView, x)).ToList
+                Else
+                    Return Nothing
+                End If
             End If
 
             Return _Productions
@@ -93,7 +98,7 @@ Imports System.Runtime.CompilerServices
             If (_AllProductions Is Nothing) OrElse (Not _AllProductions.Any) Then
                 _AllProductions = New List(Of ProductionView)
 
-                If Me.Productions.Count = 0 Then Return _AllProductions
+                If (Me.Productions Is Nothing) OrElse (Not Me.Productions.Any) Then Return _AllProductions
 
                 Dim myReturn As List(Of ProductionView) = GetAllProductions()
                 _AllProductions = myReturn
@@ -132,7 +137,6 @@ Imports System.Runtime.CompilerServices
     Public ReadOnly Property ProductionRate As Double
         Get
             Dim myReturn As Double
-
             myReturn = Me.ItemsPerMinute / (Me.RequiredMachines * Me.Recipe.ProductionRate)
 
             Return myReturn
@@ -158,15 +162,24 @@ Imports System.Runtime.CompilerServices
         NotifyPropertyChanged(NameOf(AllAdditionalItems))
         NotifyPropertyChanged(NameOf(AllProductions))
     End Sub
+    Friend Sub CalculateProductions()
+        If (Me.Productions IsNot Nothing) Then Me.Productions.ForEach(Sub(x) x.CalculateProductions())
+        If (Me.AllProductions IsNot Nothing) Then Me.AllProductions.ForEach(Sub(x) x.CalculateProductions())
+
+        Me.Recipe.UpdateProductionRate()
+
+        NotifyPropertyChanged(NameOf(RequiredMachines))
+        NotifyPropertyChanged(NameOf(ProductionRate))
+    End Sub
     Friend Sub Expand(
             thisRecipes As List(Of ResourceView),
             thisAltRecipes As List(Of ResourceView),
             thisMinerType As MinerTypeEnum,
             thisMinerSpeed As MinerSpeedEnum,
-            thisResourceRate As ResourceRateEnum,
-            thisGlobalResources As List(Of Tuple(Of String, Double)))
+            thisResourceRate As ResourceNodeTypeEnum,
+            thisBeltSpeed As BeltSpeedEnum)
 
-        BaseObj.Expand(thisRecipes.Select(Function(x) x.BaseObject).ToList, thisAltRecipes.Select(Function(x) x.BaseObject).ToList, thisMinerType, thisMinerSpeed, thisResourceRate, thisGlobalResources)
+        BaseObj.Expand(thisRecipes.Select(Function(x) x.BaseObject).ToList, thisAltRecipes.Select(Function(x) x.BaseObject).ToList, thisMinerType, thisMinerSpeed, thisResourceRate, thisBeltSpeed)
 
         NotifyPropertyChanged(NameOf(Productions))
         NotifyPropertyChanged(NameOf(AllProductions))

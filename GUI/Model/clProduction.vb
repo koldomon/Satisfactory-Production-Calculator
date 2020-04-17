@@ -8,19 +8,18 @@
     Public Property Productions As New List(Of Production)
     Public Property AdditionalItems As New List(Of Production)
 
-
     Friend Sub Expand(thisRecipes As List(Of Resource),
                       thisAltRecipes As List(Of Resource),
                       thisMinerType As MinerTypeEnum,
                       thisMinerSpeed As MinerSpeedEnum,
-                      thisResourceRate As ResourceRateEnum,
-                      thisGlobalResources As List(Of Tuple(Of String, Double)))
+                      thisResourceRate As ResourceNodeTypeEnum,
+                      thisBeltSpeed As BeltSpeedEnum)
         If (Me.Recipe.Resources Is Nothing) Then Exit Sub
 
         For Each myResource In Me.Recipe.Resources
-            Dim mySelectedResource As Resource = GetRecipe(myResource, thisRecipes, thisAltRecipes, thisMinerType, thisMinerSpeed, thisResourceRate)
-            Dim myProduction = New Production With {.Recipe = mySelectedResource, .ItemsPerMinute = (Me.ItemsPerMinute / Me.Recipe.GetProductionRate(thisMinerType, thisMinerSpeed, thisResourceRate)) * myResource.ItemsPerMinute}
-            myProduction.Expand(thisRecipes, thisAltRecipes, thisMinerType, thisMinerSpeed, thisResourceRate, thisGlobalResources)
+            Dim mySelectedResource As Resource = GetRecipe(myResource, thisRecipes, thisAltRecipes)
+            Dim myProduction = New Production With {.Recipe = mySelectedResource, .ItemsPerMinute = (Me.ItemsPerMinute / Me.Recipe.GetProductionRate(thisMinerType, thisMinerSpeed, thisResourceRate, thisBeltSpeed)) * myResource.ItemsPerMinute}
+            myProduction.Expand(thisRecipes, thisAltRecipes, thisMinerType, thisMinerSpeed, thisResourceRate, thisBeltSpeed)
             Me.Productions.Add(myProduction)
 
             If myProduction.AdditionalItems IsNot Nothing AndAlso myProduction.AdditionalItems.Any Then
@@ -30,7 +29,7 @@
 
         If (Me.Recipe.AdditionalResources IsNot Nothing) AndAlso (Me.Recipe.AdditionalResources.Any) Then
             For Each myAdditionalResource In Me.Recipe.AdditionalResources
-                Dim myAdditionalProduction = New Production With {.Recipe = myAdditionalResource, .ItemsPerMinute = Me.ItemsPerMinute * (myAdditionalResource.ItemsPerMinute / Me.Recipe.GetProductionRate(thisMinerType, thisMinerSpeed, thisResourceRate))}
+                Dim myAdditionalProduction = New Production With {.Recipe = myAdditionalResource, .ItemsPerMinute = Me.ItemsPerMinute * (myAdditionalResource.ItemsPerMinute / Me.Recipe.GetProductionRate(thisMinerType, thisMinerSpeed, thisResourceRate, thisBeltSpeed))}
                 Me.AdditionalItems.Add(myAdditionalProduction)
             Next
         End If
@@ -39,10 +38,7 @@
 
     Private Function GetRecipe(thisResource As Resource,
                                thisRecipes As List(Of Resource),
-                               thisAlternateRecipes As List(Of Resource),
-                               thisMinerType As MinerTypeEnum,
-                               thisMinerSpeed As MinerSpeedEnum,
-                               thisResourceRate As ResourceRateEnum) As Resource
+                               thisAlternateRecipes As List(Of Resource)) As Resource
 
         Dim myReturn As Resource = Nothing
         Dim myList As List(Of Resource)

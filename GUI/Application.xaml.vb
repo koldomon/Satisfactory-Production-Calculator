@@ -1,5 +1,6 @@
 ﻿Imports System.Globalization
 Imports System.IO
+Imports System.Windows.Markup
 Imports System.Xml
 Imports System.Xml.Serialization
 
@@ -11,8 +12,21 @@ Class Application
     Private glbForm As MainWindow
 
     Private Sub Application_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
+
+        My.Settings.Upgrade()
         My.Settings.Reload()
-        If (My.Settings.ActiveAlternateRecipes Is Nothing) Then My.Settings.ActiveAlternateRecipes = New Specialized.StringCollection
+
+        If (My.Settings.ActiveAlternateRecipes Is Nothing) Then
+            Dim myPreviousSettings = My.Settings.GetPreviousVersion(NameOf(My.Settings.ActiveAlternateRecipes))
+            If (myPreviousSettings IsNot Nothing) Then
+                My.Settings.ActiveAlternateRecipes = myPreviousSettings
+                My.Settings.Save()
+            Else
+                My.Settings.ActiveAlternateRecipes = New Specialized.StringCollection
+            End If
+        End If
+
+        FrameworkElement.LanguageProperty.OverrideMetadata(GetType(FrameworkElement), New FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.Name)))
 
         Dim myRecipes As List(Of Resource) = LoadRecipes()
         If myRecipes Is Nothing Then Throw New NullReferenceException("Failed to load SatisfactoryRecipes.xml")
@@ -57,6 +71,23 @@ Class Application
         Return Nothing
     End Function
 
+    Friend Sub LoadProductions(thisFile As String)
+        Dim myStore = ReadFromXML(Of SatifactoryResources)(thisFile)
+
+        If (myStore IsNot Nothing) AndAlso (myStore.Productions IsNot Nothing) AndAlso (myStore.Productions.Any) Then
+            glbViewModel.Productions.Clear()
+
+            For Each myProduction In myStore.Productions
+                Dim myRecipe = glbViewModel.Recipes.FirstOrDefault(Function(x) x.Name = myProduction.Name)
+                If (myRecipe IsNot Nothing) Then glbViewModel.AddProduction(myRecipe, myProduction.ItemsPerMinute)
+            Next
+        End If
+    End Sub
+    Friend Sub SaveProduction(thisFile As String)
+        Dim myStore As New SatifactoryResources()
+        myStore.Productions.AddRange(glbViewModel.Productions.Select(Function(x) New ProductionItem() With {.Name = x.Recipe.Name, .ItemsPerMinute = x.ItemsPerMinute}))
+        WriteToXML(Of SatifactoryResources)(myStore, thisFile)
+    End Sub
     Private Function ReadFromXML(Of T)(f As String) As T
         If (String.IsNullOrEmpty(f)) Then Throw New ArgumentException(NameOf(f))
 

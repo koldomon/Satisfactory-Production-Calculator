@@ -17,48 +17,178 @@
             <Setter Property="MinWidth" Value="3" />
         </Style>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding
+            CanExecute="AppCmd_Open_CanExecute"
+            Command="{x:Static ApplicationCommands.Open}"
+            Executed="AppCmd_Open_Executed" />
+        <CommandBinding
+            CanExecute="AppCmd_Save_CanExecute"
+            Command="{x:Static ApplicationCommands.Save}"
+            Executed="AppCmd_Save_Executed" />
+        <CommandBinding
+            CanExecute="AppCmd_SaveAs_CanExecute"
+            Command="{x:Static ApplicationCommands.SaveAs}"
+            Executed="AppCmd_SaveAs_Executed" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition
+                Height="Auto"
+                MinHeight="15" />
+            <RowDefinition
+                Height="Auto"
+                MinHeight="15" />
+            <RowDefinition
+                Height="*"
+                MinHeight="15" />
         </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem
+                    Command="{x:Static ApplicationCommands.Open}"
+                    Header="Open" />
+                <MenuItem
+                    Command="{x:Static ApplicationCommands.Save}"
+                    Header="Save" />
+                <Separator />
+                <MenuItem
+                    Command="{Binding SaveSettingsCommand}"
+                    Header="Save Settings" />
+            </MenuItem>
+            <MenuItem Header="Update">
+                <MenuItem
+                    Command="{Binding GetResources_FromGamepedia_Command}"
+                    CommandParameter="{Binding ElementName=window, Mode=OneWay}"
+                    Header="Get Resources (Gamepedia)" />
+            </MenuItem>
+        </Menu>
         <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="Auto"
+                    MinWidth="25" />
+                <ColumnDefinition
+                    Width="Auto"
+                    MinWidth="25" />
+                <ColumnDefinition
+                    Width="Auto"
+                    MinWidth="25" />
+                <ColumnDefinition
+                    Width="Auto"
+                    MinWidth="25" />
+                <ColumnDefinition
+                    Width="*"
+                    MinWidth="25" />
+                <!--<ColumnDefinition
+                    Width="Auto"
+                    MinWidth="25" />
+                <ColumnDefinition
+                    Width="Auto"
+                    MinWidth="25" />-->
+            </Grid.ColumnDefinitions>
+            <GroupBox
+                Grid.Column="0"
+                VerticalContentAlignment="Top"
+                Header="Resourcenode Type">
+                <ComboBox
+                    VerticalAlignment="Top"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:ResourceNodeTypeEnum}}}"
+                    SelectedItem="{Binding ResourceNodeType}" />
+            </GroupBox>
+            <GroupBox
+                Grid.Column="1"
+                VerticalContentAlignment="Top"
+                Header="Miner Type">
+                <ComboBox
+                    VerticalAlignment="Top"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:MinerTypeEnum}}}"
+                    SelectedItem="{Binding MinerType}" />
+            </GroupBox>
+            <GroupBox
+                Grid.Column="2"
+                VerticalContentAlignment="Top"
+                Header="Miner Speed">
+                <ComboBox
+                    VerticalAlignment="Top"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:MinerSpeedEnum}}}"
+                    SelectedItem="{Binding MinerSpeed}" />
+            </GroupBox>
+            <GroupBox
+                Grid.Column="3"
+                VerticalContentAlignment="Top"
+                Header="Belt Speed">
+                <ComboBox
+                    VerticalAlignment="Top"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:BeltSpeedEnum}}}"
+                    SelectedItem="{Binding BeltSpeed}" />
+            </GroupBox>
+            <GroupBox
+                Grid.Column="4"
+                HorizontalAlignment="right"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Top"
+                Header="Global Resources">
+                <ListView
+                    VerticalAlignment="Top"
+                    ItemsSource="{Binding GlobalResources, Mode=OneWay, NotifyOnSourceUpdated=True}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                                BorderThickness="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Padding="2,0,0,0"
+                                        Text="{Binding Name, Mode=OneWay}" />
+                                    <TextBlock
+                                        Padding="0,0,3,0"
+                                        Text=":" />
+                                    <TextBlock
+                                        Margin="0,0,0,0"
+                                        Padding="0,0,5,0"
+                                        FontWeight="Medium"
+                                        Text="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:N0\}}" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+            <!--<DataGrid
+                Grid.Column="3"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding GlobalResources}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Binding="{Binding Item1, Mode=OneWay}"
+                        Header="Type" />
+                    <DataGridTextColumn
+                        Binding="{Binding Item2, Mode=OneWay}"
+                        Header="Global Amount" />
+                </DataGrid.Columns>
+            </DataGrid>-->
+        </Grid>
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="35*" />
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="35*" />
             </Grid.ColumnDefinitions>
-            <Menu
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="7">
-                <MenuItem Header="File">
-                    <MenuItem
-                        Command="{x:Static ApplicationCommands.Open}"
-                        Header="Open" />
-                    <MenuItem
-                        Command="{x:Static ApplicationCommands.Save}"
-                        Header="Save" />
-                    <Separator />
-                    <MenuItem
-                        Command="{Binding SaveSettingsCommand}"
-                        Header="Save Settings" />
-                </MenuItem>
-                <MenuItem Header="Update">
-                    <MenuItem
-                        Command="{Binding GetResources_FromGamepedia_Command}"
-                        CommandParameter="{Binding ElementName=window, Mode=OneWay}"
-                        Header="Get Resources (Gamepedia)" />
-                </MenuItem>
-            </Menu>
             <GroupBox
                 Grid.Row="1"
                 Grid.Column="0"
@@ -68,12 +198,12 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Grid>
+                    <Grid Margin="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition
                                 Width="Auto"
-                                MinWidth="25" />
+                                MinWidth="50" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <ComboBox
@@ -83,7 +213,8 @@
                             ItemsSource="{Binding OrderedRecipes}" />
                         <TextBox
                             x:Name="txtAddItemsPerMinute"
-                            Grid.Column="1" />
+                            Grid.Column="1"
+                            Margin="5,0" />
                         <Button
                             Grid.Column="2"
                             Click="AddProduction_Click"
@@ -111,6 +242,7 @@
                                 IsReadOnly="True" />
                             <DataGridTextColumn
                                 Width="Auto"
+                                MinWidth="50"
                                 Binding="{Binding ItemsPerMinute, StringFormat=\{0:0.####\}}"
                                 Header="Items/min">
                                 <DataGridTextColumn.ElementStyle>
@@ -215,7 +347,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             HorizontalAlignment="Stretch"
-                            Text="{Binding SelectedProduction.Recipe.ProductionRate, Mode=OneWay, StringFormat='\{0:0.####\}'}"
+                            Text="{Binding SelectedProduction.Recipe.ProductionRate, Mode=OneWay, StringFormat='\{0:0.####\}', NotifyOnSourceUpdated=True}"
                             TextAlignment="Left" />
                         <DataGrid
                             Grid.Row="0"
@@ -480,19 +612,32 @@
                             CanUserAddRows="False"
                             CanUserDeleteRows="False"
                             CanUserResizeRows="False"
+                            CanUserSortColumns="True"
                             ColumnWidth="SizeToHeader"
                             ItemsSource="{Binding OrderedRecipes}"
-                            SelectionMode="Extended">
+                            SelectionMode="Single">
                             <DataGrid.Columns>
                                 <DataGridCheckBoxColumn
                                     Width="Auto"
                                     Binding="{Binding IsAlternativeRecipe, Mode=OneWay}"
                                     Header="Alt"
-                                    IsReadOnly="True" />
+                                    IsReadOnly="True">
+                                    <DataGridCheckBoxColumn.CellStyle>
+                                        <Style TargetType="{x:Type DataGridCell}">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </Style>
+                                    </DataGridCheckBoxColumn.CellStyle>
+                                </DataGridCheckBoxColumn>
                                 <DataGridCheckBoxColumn
                                     Width="Auto"
                                     Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"
-                                    Header="Act" />
+                                    Header="Act">
+                                    <DataGridCheckBoxColumn.CellStyle>
+                                        <Style TargetType="{x:Type DataGridCell}">
+                                            <Setter Property="IsEnabled" Value="{Binding IsAlternativeRecipe, Mode=OneWay}" />
+                                        </Style>
+                                    </DataGridCheckBoxColumn.CellStyle>
+                                </DataGridCheckBoxColumn>
                                 <DataGridTextColumn
                                     Width="*"
                                     Binding="{Binding Name, Mode=OneWay}"

@@ -26,22 +26,49 @@
             If (Not _GlobalSourcesSum.HasValue) Then
                 If (Me.GlobalSources IsNot Nothing) AndAlso (Me.GlobalSources.Any) Then
                     If Me.Name.Equals("Crude Oil") Then
-                        _GlobalSourcesSum = Me.GlobalSources.Sum(Function(x) [Enum].Parse(GetType(ResourceRateEnum), x.GlobalSourcesType) * 2 * x.GlobalSourcesCount)
+                        _GlobalSourcesSum = Me.GlobalSources.Sum(Function(x) [Enum].Parse(GetType(ResourceNodeTypeEnum), x.GlobalSourcesType) * 2 * x.GlobalSourcesCount)
                     Else
-                        _GlobalSourcesSum = Me.GlobalSources.Sum(Function(x) [Enum].Parse(GetType(ResourceRateEnum), x.GlobalSourcesType) * x.GlobalSourcesCount)
+                        _GlobalSourcesSum = Me.GlobalSources.Sum(Function(x) [Enum].Parse(GetType(ResourceNodeTypeEnum), x.GlobalSourcesType) * x.GlobalSourcesCount)
                     End If
+                ElseIf Me.Name.Equals("Water") Then
+                    _GlobalSourcesSum = ResourceNodeTypeEnum.Pure * 100
                 Else
-                    If Me.Name.Equals("Water") Then
-                        _GlobalSourcesSum = ResourceRateEnum.Pure * 100
-                    Else
-                        _GlobalSourcesSum = 0
-                    End If
+                    _GlobalSourcesSum = 0
                 End If
             End If
 
             Return _GlobalSourcesSum.Value
         End Get
     End Property
+    Public Function GetGlobalSourcesSum(thisMinerType As MinerTypeEnum, thisMinerSpeed As MinerSpeedEnum, thisBeltSpeed As BeltSpeedEnum) As Double
+        Dim myReturn As Double
+        If (Me.GlobalSources IsNot Nothing) AndAlso (Me.GlobalSources.Any) Then
+            For Each mySource In Me.GlobalSources
+                Dim myBaseValue As Double = ResourceNodeTypeEnum.Normal
+                Dim myTempValue As Double
+
+                If (Me.Name.Equals("Crude Oil")) OrElse (Me.Name.Equals("Water")) Then myBaseValue = 120
+
+                Select Case DirectCast([Enum].Parse(GetType(ResourceNodeTypeEnum), mySource.GlobalSourcesType), ResourceNodeTypeEnum)
+                    Case ResourceNodeTypeEnum.Impure
+                        myTempValue = myBaseValue / 2 * thisMinerType * (thisMinerSpeed / 100)
+                    Case ResourceNodeTypeEnum.Normal
+                        myTempValue = myBaseValue * thisMinerType * (thisMinerSpeed / 100)
+                    Case ResourceNodeTypeEnum.Pure
+                        myTempValue = myBaseValue * 2 * thisMinerType * (thisMinerSpeed / 100)
+                End Select
+
+                If (Me.Name.Equals("Crude Oil")) OrElse (Me.Name.Equals("Water")) Then
+                    If (myTempValue > 300) Then myTempValue = 300 'cap fluids by max output
+                Else
+                    If (myTempValue > thisBeltSpeed) Then myTempValue = thisBeltSpeed 'cap resource by max belt speed
+                End If
+                myReturn += myTempValue * mySource.GlobalSourcesCount
+            Next
+        End If
+
+        Return myReturn
+    End Function
     <XmlIgnore> Friend Shared Property AllResources As List(Of Resource)
         Get
             If (_AllResources Is Nothing) Then _AllResources = New List(Of Resource)
@@ -89,28 +116,35 @@
     Public ReadOnly Property ProductionRate() As Double
         Get
             If (Not _ProductionRate.HasValue) Then
-                _ProductionRate = GetProductionRate(MainViewModel.MinerType, MainViewModel.MinerSpeed, MainViewModel.ResourceRate)
+                _ProductionRate = GetProductionRate(MainViewModel.CurrentMinerType, MainViewModel.CurrentMinerSpeed, MainViewModel.CurrentResourceNodeType, MainViewModel.CurrentBeltSpeed)
             End If
 
             Return _ProductionRate.Value
         End Get
     End Property
-    Public Function GetProductionRate(thisMinerType As MinerTypeEnum, thisMinerSpeed As MinerSpeedEnum, thisResourceRate As ResourceRateEnum) As Double
+    Public Function GetProductionRate(thisMinerType As MinerTypeEnum, thisMinerSpeed As MinerSpeedEnum, thisResourceRate As ResourceNodeTypeEnum, thisBeltSpeed As BeltSpeedEnum) As Double
+        Dim myReturn As Double
+
         If (Not String.IsNullOrEmpty(Me.Name)) AndAlso (Me.Name.Equals("Water")) Then
-            Return Me.ProductionPerMachine * (MinerSpeedEnum.Speed100 / 100)
+            myReturn = Me.ProductionPerMachine * (thisMinerSpeed / 100)
+            If (myReturn > 300) Then myReturn = 300
         ElseIf (Not String.IsNullOrEmpty(Me.Name)) AndAlso (Me.Name.Equals("Crude Oil")) Then
-            Return Me.ProductionPerMachine * MinerTypeEnum.MK1 * (thisMinerSpeed / 100)
+            myReturn = Me.ProductionPerMachine * (thisMinerSpeed / 100)
+            If (myReturn > 300) Then myReturn = 300
         ElseIf (Me.GlobalSources IsNot Nothing) AndAlso (Me.GlobalSources.Any) Then
-            Return thisResourceRate * thisMinerType * (thisMinerSpeed / 100)
+            myReturn = thisResourceRate * thisMinerType * (thisMinerSpeed / 100)
+            If (myReturn > thisBeltSpeed) Then myReturn = thisBeltSpeed
         ElseIf (Me.ProductionPerMachine > 0) AndAlso (Me.ProductionPerMinute = 0) Then
-            Return Me.ProductionPerMachine * thisMinerType * (thisMinerSpeed / 100)
+            myReturn = Me.ProductionPerMachine * thisMinerType * (thisMinerSpeed / 100)
+            If (myReturn > thisBeltSpeed) Then myReturn = thisBeltSpeed
         ElseIf (Me.ProductionPerMachine = 0) AndAlso (Me.ProductionPerMinute > 0) Then
-            Return Me.ProductionPerMinute
+            myReturn = Me.ProductionPerMinute
         ElseIf (Me.ItemsPerMinute > 0) Then
-            Return Me.ItemsPerMinute
+            myReturn = Me.ItemsPerMinute
         Else
-            Return 1
+            myReturn = 1
         End If
+        Return myReturn
     End Function
     Public Overrides Function Equals(other As Object) As Boolean
         If (other Is Nothing) Then Return False

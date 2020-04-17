@@ -12,25 +12,29 @@
     <MyType>Custom</MyType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>0.2.2004.171</AssemblyVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <AssemblyVersion>0.2.2004.172</AssemblyVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
     <PublishUrl>C:\Users\markus.POWERLAB\source\repos\Satisfactory Calculator\builds\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdatePeriodically>true</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
+    <InstallUrl>https://github.com/koldomon/Satisfactory-Production-Calculator/tree/master/builds/</InstallUrl>
+    <UpdateUrl>https://github.com/koldomon/Satisfactory-Production-Calculator/tree/master/builds/</UpdateUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Satisfactory Production Calculator</ProductName>
     <PublisherName>koldomon</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>171</ApplicationRevision>
-    <ApplicationVersion>0.2.2004.171</ApplicationVersion>
+    <DisallowUrlActivation>true</DisallowUrlActivation>
+    <ApplicationRevision>172</ApplicationRevision>
+    <ApplicationVersion>0.2.2004.172</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
@@ -122,6 +126,7 @@
     <Compile Include="Dataflow\dfGetResources.vb" />
     <Compile Include="Model\clEnums.vb" />
     <Compile Include="Model\clProduction.vb" />
+    <Compile Include="Model\clProductionItem.vb" />
     <Compile Include="Model\clResource.vb" />
     <Compile Include="Model\SatifactoryResources.vb" />
     <Compile Include="ViewModel\ViewModelBase.vb" />

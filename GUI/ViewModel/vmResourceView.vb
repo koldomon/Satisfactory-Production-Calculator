@@ -55,7 +55,7 @@ Imports System.Runtime.CompilerServices
 
     Public ReadOnly Property ProductionRate As Double
         Get
-            Return BaseObject.GetProductionRate(MinerTypeEnum.MK1, MinerSpeedEnum.Speed100, ResourceRateEnum.Normal)
+            Return BaseObject.GetProductionRate(MainViewModel.CurrentMinerType, MainViewModel.CurrentMinerSpeed, MainViewModel.CurrentResourceNodeType, MainViewModel.CurrentBeltSpeed)
         End Get
     End Property
     Public ReadOnly Property ProductionCost As Double
@@ -97,4 +97,7 @@ Imports System.Runtime.CompilerServices
         End Set
     End Property
 
+    Public Sub UpdateProductionRate()
+        NotifyPropertyChanged(NameOf(ProductionRate))
+    End Sub
 End Class

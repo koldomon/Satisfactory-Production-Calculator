@@ -259,7 +259,7 @@ Public Class GetResources_FromSatisfactoryCalculator_DataFlow
     Private ParseResource As TransformManyBlock(Of Tuple(Of String, HtmlDocument), Resource)
     Public [Output] As BufferBlock(Of Resource)
 
-    Dim myExecuteSingleOptions As New ExecutionDataflowBlockOptions With {.EnsureOrdered = True, .MaxDegreeOfParallelism = 1, .TaskScheduler = TaskScheduler.Default}
+    Dim myExecuteSingleOptions As New ExecutionDataflowBlockOptions With {.EnsureOrdered = True, .MaxDegreeOfParallelism = 1, .TaskScheduler = TaskScheduler.Current}
     Dim myExecuteMultiOptions As New ExecutionDataflowBlockOptions With {.EnsureOrdered = False, .MaxDegreeOfParallelism = 8, .TaskScheduler = TaskScheduler.Default}
 
     Dim myLinkOptions As New DataflowLinkOptions With {.PropagateCompletion = True}
