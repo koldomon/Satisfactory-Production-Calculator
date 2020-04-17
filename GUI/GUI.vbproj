@@ -12,7 +12,7 @@
     <MyType>Custom</MyType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>0.2.2004.173</AssemblyVersion>
+    <AssemblyVersion>0.2.2004.174</AssemblyVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\markus.POWERLAB\source\repos\Satisfactory Calculator\builds\</PublishUrl>
     <Install>true</Install>
@@ -29,8 +29,8 @@
     <PublisherName>koldomon</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <DisallowUrlActivation>true</DisallowUrlActivation>
-    <ApplicationRevision>173</ApplicationRevision>
-    <ApplicationVersion>0.2.2004.173</ApplicationVersion>
+    <ApplicationRevision>174</ApplicationRevision>
+    <ApplicationVersion>0.2.2004.174</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>

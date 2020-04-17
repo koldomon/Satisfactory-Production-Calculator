@@ -126,11 +126,13 @@
         Dim myReturn As Double
 
         If (Not String.IsNullOrEmpty(Me.Name)) AndAlso (Me.Name.Equals("Water")) Then
-            myReturn = Me.ProductionPerMachine * (thisMinerSpeed / 100)
+            myReturn = 120 * (thisMinerSpeed / 100)
             If (myReturn > 300) Then myReturn = 300
         ElseIf (Not String.IsNullOrEmpty(Me.Name)) AndAlso (Me.Name.Equals("Crude Oil")) Then
-            myReturn = Me.ProductionPerMachine * (thisMinerSpeed / 100)
-            If (myReturn > 300) Then myReturn = 300
+            If (Me.GlobalSources IsNot Nothing) AndAlso (Me.GlobalSources.Any) Then
+                myReturn = 120 * thisMinerType * (thisMinerSpeed / 100)
+                If (myReturn > 300) Then myReturn = 300
+            End If
         ElseIf (Me.GlobalSources IsNot Nothing) AndAlso (Me.GlobalSources.Any) Then
             myReturn = thisResourceRate * thisMinerType * (thisMinerSpeed / 100)
             If (myReturn > thisBeltSpeed) Then myReturn = thisBeltSpeed
@@ -144,6 +146,7 @@
         Else
             myReturn = 1
         End If
+
         Return myReturn
     End Function
     Public Overrides Function Equals(other As Object) As Boolean
