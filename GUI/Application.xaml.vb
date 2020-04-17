@@ -86,6 +86,8 @@ Class Application
         End If
     End Sub
     Friend Sub SaveProduction(thisFile As String)
+        If String.IsNullOrEmpty(thisFile) Then Exit Sub
+
         Dim myStore As New SatifactoryResources()
         myStore.Productions.AddRange(glbViewModel.Productions.Select(Function(x) New ProductionItem() With {.Name = x.Recipe.Name, .ItemsPerMinute = x.ItemsPerMinute}))
         WriteToXML(Of SatifactoryResources)(myStore, thisFile)

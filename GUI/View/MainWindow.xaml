@@ -181,13 +181,13 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="23*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="22*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="35*" />
+                <ColumnDefinition Width="30*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="35*" />
+                <ColumnDefinition Width="25*" />
             </Grid.ColumnDefinitions>
             <GroupBox
                 Grid.Row="1"
@@ -231,12 +231,14 @@
                         ItemsSource="{Binding Productions, Mode=OneWay}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
-                                Width="*"
+                                Width="Auto"
+                                MinWidth="100"
                                 Binding="{Binding Recipe.Name, Mode=OneWay}"
                                 Header="Name"
                                 IsReadOnly="True" />
                             <DataGridTextColumn
-                                Width="Auto"
+                                Width="*"
+                                MinWidth="100"
                                 Binding="{Binding Recipe.Type, Mode=OneWay}"
                                 Header="Type"
                                 IsReadOnly="True" />
@@ -327,76 +329,123 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition
-                                Width="20*"
+                                Width="15*"
                                 MinWidth="95" />
                             <ColumnDefinition
-                                Width="10*"
+                                Width="20*"
                                 MinWidth="75" />
-                            <ColumnDefinition Width="70*" />
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Text="Production/min.:" />
-                        <TextBlock
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            HorizontalAlignment="Stretch"
-                            Text="{Binding SelectedProduction.Recipe.ProductionRate, Mode=OneWay, StringFormat='\{0:0.####\}', NotifyOnSourceUpdated=True}"
-                            TextAlignment="Left" />
-                        <DataGrid
-                            Grid.Row="0"
-                            Grid.RowSpan="3 "
-                            Grid.Column="2"
-                            AutoGenerateColumns="False"
-                            CanUserAddRows="False"
-                            CanUserDeleteRows="False"
-                            CanUserResizeRows="False"
-                            ColumnWidth="SizeToHeader"
-                            ItemsSource="{Binding SelectedProduction.Recipe.Resources, Mode=OneWay}"
-                            SelectionMode="Extended">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn
+                        <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
                                     Width="Auto"
-                                    Binding="{Binding Type, Mode=OneWay}"
-                                    Header="Type" />
-                                <DataGridTextColumn
-                                    Width="Auto"
-                                    Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.0\}}"
-                                    Header="Items/min">
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="Margin" Value="0,0,3,0" />
-                                            <Setter Property="TextAlignment" Value="Right" />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <TextBlock
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Text="Production Costs:" />
-                        <TextBlock
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            HorizontalAlignment="Stretch"
-                            Text="{Binding SelectedProduction.Recipe.ProductionCost, Mode=OneWay, StringFormat='\{0:0.######\}'}"
-                            TextAlignment="Left" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            Text="Category:" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Text="{Binding SelectedProduction.Recipe.Category, Mode=OneWay}"
-                            TextAlignment="Left" />
+                                    MinWidth="95" />
+                                <ColumnDefinition
+                                    Width="*"
+                                    MinWidth="75" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="Production/min.:" />
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                HorizontalAlignment="Stretch"
+                                Text="{Binding SelectedProduction.Recipe.ProductionRate, Mode=OneWay, NotifyOnSourceUpdated=True, StringFormat=\{0:0.####\}}"
+                                TextAlignment="Left" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="Production Costs:" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalAlignment="Stretch"
+                                Text="{Binding SelectedProduction.Recipe.ProductionCost, Mode=OneWay, StringFormat=\{0:0.######\}}"
+                                TextAlignment="Left" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="Category:" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding SelectedProduction.Recipe.Category, Mode=OneWay}"
+                                TextAlignment="Left" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <GroupBox
+                                Grid.Row="0"
+                                Header="Resources">
+                                <DataGrid
+                                    AutoGenerateColumns="False"
+                                    CanUserAddRows="False"
+                                    CanUserDeleteRows="False"
+                                    CanUserResizeRows="False"
+                                    ColumnWidth="SizeToHeader"
+                                    ItemsSource="{Binding SelectedProduction.Recipe.Resources, Mode=OneWay}"
+                                    SelectionMode="Extended">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn
+                                            Width="*"
+                                            Binding="{Binding Type, Mode=OneWay}"
+                                            Header="Type" />
+                                        <DataGridTextColumn
+                                            Width="Auto"
+                                            Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.00##\}}"
+                                            Header="Items/min">
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="Margin" Value="0,0,3,0" />
+                                                    <Setter Property="TextAlignment" Value="Right" />
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                            <GroupBox
+                                Grid.Row="1"
+                                Header="Additional Productions">
+                                <DataGrid
+                                    Grid.Row="1"
+                                    AutoGenerateColumns="False"
+                                    CanUserAddRows="False"
+                                    CanUserDeleteRows="False"
+                                    CanUserResizeRows="False"
+                                    ColumnWidth="SizeToHeader"
+                                    ItemsSource="{Binding SelectedProduction.Recipe.AdditionalItems, Mode=OneWay}"
+                                    SelectionMode="Extended">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn
+                                            Width="*"
+                                            Binding="{Binding Type, Mode=OneWay}"
+                                            Header="Type" />
+                                        <DataGridTextColumn
+                                            Width="Auto"
+                                            Binding="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:0.0\}}"
+                                            Header="Items/min">
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="Margin" Value="0,0,3,0" />
+                                                    <Setter Property="TextAlignment" Value="Right" />
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
                     </Grid>
                 </GroupBox>
                 <GroupBox
@@ -427,8 +476,7 @@
                         <TextBox
                             Grid.Column="3"
                             Margin="0"
-                            IsReadOnly="True"
-                            Text="{Binding SelectedProduction.RequiredMachines, Mode=OneWay, StringFormat='\{0:0\} Machines'}"
+                            Text="{Binding SelectedProduction.RequiredMachines, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, StringFormat='\{0:0\}'}"
                             TextAlignment="Right" />
                         <TextBox
                             Grid.Column="4"
@@ -475,8 +523,9 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn
                                 Width="Auto"
-                                Binding="{Binding RequiredMachines, Mode=OneWay, StringFormat=\{0:0\}}"
-                                Header="Machines">
+                                Binding="{Binding RequiredMachines, Mode=TwoWay, NotifyOnSourceUpdated=True, StringFormat='\{0:0\}'}"
+                                Header="Machines"
+                                IsReadOnly="True">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Margin" Value="0,0,3,0" />
@@ -486,7 +535,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn
                                 Width="Auto"
-                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
+                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P1\}}"
                                 Header="Prod.Rate">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
@@ -536,8 +585,9 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn
                                 Width="Auto"
-                                Binding="{Binding RequiredMachines, Mode=OneWay, StringFormat=\{0:0\}}"
-                                Header="Machines">
+                                Binding="{Binding RequiredMachines, Mode=TwoWay, NotifyOnSourceUpdated=True, StringFormat='\{0:0\}'}"
+                                Header="Machines"
+                                IsReadOnly="True">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Margin" Value="0,0,3,0" />
@@ -547,7 +597,7 @@
                             </DataGridTextColumn>
                             <DataGridTextColumn
                                 Width="Auto"
-                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P0\}}"
+                                Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:P1\}}"
                                 Header="Prod.Rate">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">

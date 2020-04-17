@@ -13,6 +13,7 @@ Imports System.Runtime.CompilerServices
     Private _AllProductions As New List(Of ProductionView)
     Private _AllAdditionalItems As New List(Of ProductionView)
     Private _IsSelected As Boolean
+    Private _RequiredMachines As Int32?
 
     Protected Friend MainView As MainViewModel
     Protected Friend BaseObj As Production
@@ -33,7 +34,6 @@ Imports System.Runtime.CompilerServices
     'Friend Sub NotifyPropertyChanged(<CallerMemberName> Optional propertyName As String = Nothing)
     '    RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
     'End Sub
-
 
     Public ReadOnly Property Recipe As ResourceView
         Get
@@ -120,19 +120,34 @@ Imports System.Runtime.CompilerServices
         End Get
     End Property
 
-    Public ReadOnly Property RequiredMachines As Int32
+    Public Property RequiredMachines As Int32
         Get
-            Dim myReturn As Double
+            If (Not _RequiredMachines.HasValue) Then
+                Dim myReturn As Double
 
-            If Me.Recipe.ProductionRate > 0 Then
-                myReturn = Math.Ceiling(Me.ItemsPerMinute / Me.Recipe.ProductionRate)
-            Else
-                myReturn = Math.Ceiling(Me.ItemsPerMinute)
+                If Me.Recipe.ProductionRate > 0 Then
+                    myReturn = Math.Ceiling(Me.ItemsPerMinute / Me.Recipe.ProductionRate)
+                Else
+                    myReturn = Math.Ceiling(Me.ItemsPerMinute)
+                End If
+
+                Debug.Assert(Not Double.IsInfinity(myReturn))
+                Debug.Assert(Not Double.IsNaN(myReturn))
+                Debug.Assert(Not myReturn = 0)
+
+                Return Convert.ToInt32(myReturn)
             End If
-            If Double.IsInfinity(myReturn) Then myReturn = 1
-
-            Return Convert.ToInt32(myReturn)
+            Return _RequiredMachines
         End Get
+        Set
+            If _RequiredMachines.HasValue AndAlso Value = 0 Then
+                _RequiredMachines = Nothing
+                NotifyPropertyChanged()
+            ElseIf Value > 0 Then
+                _RequiredMachines = Value
+                NotifyPropertyChanged()
+            End If
+        End Set
     End Property
     Public ReadOnly Property ProductionRate As Double
         Get
@@ -214,9 +229,6 @@ Imports System.Runtime.CompilerServices
     Private Function GetAllAdditionalItems() As List(Of ProductionView)
         Dim myTempList As New List(Of Production)
         myTempList.AddRange(Me.AdditionalItems.Select(Function(x) ToProduction(x)))
-        For Each myProduction In Me.Productions
-            myTempList.AddRange(myProduction.AdditionalItems.Select(Function(x) ToProduction(x)))
-        Next
 
         Dim myGroups = From myAdditionalProduction In myTempList
                        Group By Recipe = myAdditionalProduction.Recipe Into AdditionalProductions = Group
