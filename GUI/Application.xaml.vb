@@ -63,7 +63,7 @@ Class Application
     End Sub
 
     Private Function LoadRecipes() As List(Of Resource)
-        Dim myStore = ReadFromXML(Of SatifactoryResources)(IO.Path.Combine(".\sources", "SatisfactoryRecipes.xml"))
+        Dim myStore = ReadFromXML(Of SatifactoryResources)(IO.Path.Combine("sources", "SatisfactoryRecipes.xml"))
         If (myStore IsNot Nothing) Then
             Return myStore.Recipes
         End If
