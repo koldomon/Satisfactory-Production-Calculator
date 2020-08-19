@@ -1,0 +1,1310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Satisfactory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Items>
+    <WorldItem ItemType="Bauxite" ItemCategory="BasicOre" ImpureCount="3" NormalCount="5" PureCount="5" BaseValue="Default" />
+    <WorldItem ItemType="Caterium Ore" ItemCategory="BasicOre" ImpureCount="0" NormalCount="8" PureCount="8" BaseValue="Default" />
+    <WorldItem ItemType="Coal" ItemCategory="BasicOre" ImpureCount="6" NormalCount="29" PureCount="16" BaseValue="Default" />
+    <Recipe ItemType="Coal" ItemCategory="Item" Name="Biocoal" IsAlternativeRecipe="true" OutputPerMinute="45">
+      <Inputs>
+        <SourceItem ItemsPerMinute="37.5" ItemType="Biomass" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Coal" ItemCategory="Item" Name="Charcoal" IsAlternativeRecipe="true" OutputPerMinute="150">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Wood" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <WorldItem ItemType="Copper Ore" ItemCategory="BasicOre" ImpureCount="9" NormalCount="28" PureCount="12" BaseValue="Default" />
+    <WorldItem ItemType="Crude Oil" ItemCategory="BasicFluid" ImpureCount="10" NormalCount="12" PureCount="8" BaseValue="Water" />
+    <Recipe ItemType="Crude Oil" ItemCategory="Item" Name="Unpackage Oil" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Packaged Oil" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Empty Canister" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Packaged Oil" ItemCategory="Item" Name="Packaged Oil" IsAlternativeRecipe="false" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Crude Oil" />
+        <SourceItem ItemsPerMinute="30" ItemType="Empty Canister" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <WorldItem ItemType="Iron Ore" ItemCategory="BasicOre" ImpureCount="33" NormalCount="41" PureCount="46" BaseValue="Default" />
+    <WorldItem ItemType="Limestone" ItemCategory="BasicOre" ImpureCount="12" NormalCount="47" PureCount="27" BaseValue="Default" />
+    <WorldItem ItemType="Raw Quartz" ItemCategory="BasicOre" ImpureCount="0" NormalCount="11" PureCount="5" BaseValue="Default" />
+    <WorldItem ItemType="S.A.M. Ore" ItemCategory="BasicOre" ImpureCount="9" NormalCount="5" PureCount="0" BaseValue="Default" />
+    <WorldItem ItemType="Sulfur" ItemCategory="BasicOre" ImpureCount="1" NormalCount="7" PureCount="3" BaseValue="Default" />
+    <WorldItem ItemType="Uranium" ItemCategory="BasicOre" ImpureCount="0" NormalCount="3" PureCount="0" BaseValue="Default" />
+    <WorldItem ItemType="Water" ItemCategory="BasicFluid" ImpureCount="0" NormalCount="0" PureCount="100" BaseValue="Water" />
+    <Recipe ItemType="Water" ItemCategory="Item" Name="Unpackage Water" IsAlternativeRecipe="false" OutputPerMinute="120">
+      <Inputs>
+        <SourceItem ItemsPerMinute="120" ItemType="Packaged Water" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="120" ItemType="Empty Canister" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Aluminum Scrap" ItemCategory="BasicItem" Name="Aluminum Scrap" IsAlternativeRecipe="false" OutputPerMinute="360">
+      <Inputs>
+        <SourceItem ItemsPerMinute="240" ItemType="Alumina Solution" />
+        <SourceItem ItemsPerMinute="60" ItemType="Petroleum Coke" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Water" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Aluminum Scrap" ItemCategory="Item" Name="Electrode - Aluminum Scrap" IsAlternativeRecipe="true" OutputPerMinute="150">
+      <Inputs>
+        <SourceItem ItemsPerMinute="90" ItemType="Alumina Solution" />
+        <SourceItem ItemsPerMinute="30" ItemType="Coal" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Water" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Packaged Water" ItemCategory="Item" Name="Packaged Water" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Water" />
+        <SourceItem ItemsPerMinute="60" ItemType="Empty Canister" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <CollectableItem ItemType="Alien Carapace" ItemCategory="Collectable" Name="Alien Carapace" Count="1" />
+    <CollectableItem ItemType="Alien Organs" ItemCategory="Collectable" Name="Alien Organs" Count="1" />
+    <CollectableItem ItemType="Flower Petals" ItemCategory="Collectable" Name="Flower Petals" Count="1" />
+    <CollectableItem ItemType="Leaves" ItemCategory="Collectable" Name="Leaves" Count="1" />
+    <CollectableItem ItemType="Mycelia" ItemCategory="Collectable" Name="Mycelia" Count="1" />
+    <CollectableItem ItemType="Green Power Slug" ItemCategory="Collectable" Name="Green Power Slug" Count="409" />
+    <CollectableItem ItemType="Yellow Power Slug" ItemCategory="Collectable" Name="Yellow Power Slug" Count="230" />
+    <CollectableItem ItemType="Purple Power Slug" ItemCategory="Collectable" Name="Purple Power Slug" Count="124" />
+    <CollectableItem ItemType="Wood" ItemCategory="Collectable" Name="Wood" Count="1" />
+    <CollectableItem ItemType="Bacon Agaric" ItemCategory="Item" Name="Bacon Agaric" Count="1" />
+    <CollectableItem ItemType="Beryl Nut" ItemCategory="Item" Name="Beryl Nut" Count="1" />
+    <CollectableItem ItemType="Paleberry" ItemCategory="Item" Name="Paleberry" Count="1" />
+    <Recipe ItemType="Medicinal Inhaler" ItemCategory="Item" Name="Medicinal Inhaler" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="1" ItemType="Bacon Agaric" />
+        <SourceItem ItemsPerMinute="3" ItemType="Paleberry" />
+        <SourceItem ItemsPerMinute="7" ItemType="Beryl Nut" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Medicinal Inhaler" ItemCategory="Item" Name="Medicinal Inhaler: Alien Organs" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3" ItemType="Alien Organs" />
+        <SourceItem ItemsPerMinute="5" ItemType="Mycelia" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Medicinal Inhaler" ItemCategory="Item" Name="Nutritional Inhaler" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="1" ItemType="Bacon Agaric" />
+        <SourceItem ItemsPerMinute="2" ItemType="Paleberry" />
+        <SourceItem ItemsPerMinute="3" ItemType="Beryl Nut" />
+        <SourceItem ItemsPerMinute="5" ItemType="Mycelia" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <CollectableItem ItemType="FICSIT Coupon" ItemCategory="Item" Name="FICSIT Coupon" Count="1" />
+    <CollectableItem ItemType="Geyser" ItemCategory="Item" Name="Geyser" Count="1" />
+    <CollectableItem ItemType="Hard Drive" ItemCategory="Item" Name="Hard Drive" Count="1" />
+    <CollectableItem ItemType="HUB Parts" ItemCategory="Item" Name="HUB Parts" Count="1" />
+    <CollectableItem ItemType="Mercer Sphere" ItemCategory="Item" Name="Mercer Sphere" Count="1" />
+    <CollectableItem ItemType="Somersloop" ItemCategory="Item" Name="Somersloop" Count="1" />
+    <Recipe ItemType="Biomass" ItemCategory="Item" Name="Biomass (Leaves)" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="120" ItemType="Leaves" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Biomass" ItemCategory="Item" Name="Biomass (Wood)" IsAlternativeRecipe="false" OutputPerMinute="300">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Wood" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Biomass" ItemCategory="Item" Name="Biomass (Mycelia)" IsAlternativeRecipe="false" OutputPerMinute="150">
+      <Inputs>
+        <SourceItem ItemsPerMinute="150" ItemType="Mycelia" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Biomass" ItemCategory="Item" Name="Biomass (Alien Carapace)" IsAlternativeRecipe="false" OutputPerMinute="1500">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Alien Carapace" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Biomass" ItemCategory="Item" Name="Biomass (Alien Organs)" IsAlternativeRecipe="false" OutputPerMinute="1500">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Alien Organs" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Cable" ItemCategory="Item" Name="Cable" IsAlternativeRecipe="false" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Wire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Cable" ItemCategory="Item" Name="Coated Cable" IsAlternativeRecipe="true" OutputPerMinute="67.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="37.5" ItemType="Wire" />
+        <SourceItem ItemsPerMinute="15" ItemType="Heavy Oil Residue" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Cable" ItemCategory="Item" Name="Insulated Cable" IsAlternativeRecipe="true" OutputPerMinute="100">
+      <Inputs>
+        <SourceItem ItemsPerMinute="45" ItemType="Wire" />
+        <SourceItem ItemsPerMinute="30" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Cable" ItemCategory="Item" Name="Quickwire Cable" IsAlternativeRecipe="true" OutputPerMinute="27.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Quickwire" />
+        <SourceItem ItemsPerMinute="5" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Concrete" ItemCategory="BasicItem" Name="Concrete" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="45" ItemType="Limestone" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Concrete" ItemCategory="BasicItem" Name="Rubber Concrete" IsAlternativeRecipe="true" OutputPerMinute="45">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Limestone" />
+        <SourceItem ItemsPerMinute="10" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Concrete" ItemCategory="BasicItem" Name="Wet Concrete" IsAlternativeRecipe="true" OutputPerMinute="80">
+      <Inputs>
+        <SourceItem ItemsPerMinute="120" ItemType="Limestone" />
+        <SourceItem ItemsPerMinute="100" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Concrete" ItemCategory="BasicItem" Name="Fine Concrete" IsAlternativeRecipe="true" OutputPerMinute="25">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Silica" />
+        <SourceItem ItemsPerMinute="30" ItemType="Limestone" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Copper Ingot" ItemCategory="Ingot" Name="Copper Ingot" IsAlternativeRecipe="false" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Copper Ore" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Copper Ingot" ItemCategory="Ingot" Name="Copper Alloy Ingot" IsAlternativeRecipe="true" OutputPerMinute="100">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Copper Ore" />
+        <SourceItem ItemsPerMinute="25" ItemType="Iron Ore" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Copper Ingot" ItemCategory="Ingot" Name="Pure Copper Ingot" IsAlternativeRecipe="true" OutputPerMinute="37.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Copper Ore" />
+        <SourceItem ItemsPerMinute="10" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Ingot" ItemCategory="Ingot" Name="Iron Ingot" IsAlternativeRecipe="false" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Iron Ore" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Ingot" ItemCategory="Ingot" Name="Pure Iron Ingot" IsAlternativeRecipe="true" OutputPerMinute="65">
+      <Inputs>
+        <SourceItem ItemsPerMinute="35" ItemType="Iron Ore" />
+        <SourceItem ItemsPerMinute="20" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Ingot" ItemCategory="Ingot" Name="Iron Alloy Ingot" IsAlternativeRecipe="true" OutputPerMinute="50">
+      <Inputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Iron Ore" />
+        <SourceItem ItemsPerMinute="20" ItemType="Copper Ore" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Plate" ItemCategory="Item" Name="Iron Plate" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Iron Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Plate" ItemCategory="Item" Name="Coated Iron Plate" IsAlternativeRecipe="true" OutputPerMinute="75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Iron Ingot" />
+        <SourceItem ItemsPerMinute="10" ItemType="Plastic" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Plate" ItemCategory="Item" Name="Steel Coated Plate" IsAlternativeRecipe="true" OutputPerMinute="45">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Steel Ingot" />
+        <SourceItem ItemsPerMinute="5" ItemType="Plastic" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Rod" ItemCategory="Item" Name="Iron Rod" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Iron Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iron Rod" ItemCategory="Item" Name="Steel Rod" IsAlternativeRecipe="true" OutputPerMinute="48">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12" ItemType="Steel Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Reinforced Iron Plate" ItemCategory="Item" Name="Reinforced Iron Plate" IsAlternativeRecipe="false" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Iron Plate" />
+        <SourceItem ItemsPerMinute="60" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Reinforced Iron Plate" ItemCategory="Item" Name="Adhered Iron Plate" IsAlternativeRecipe="true" OutputPerMinute="3.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="11.25" ItemType="Iron Plate" />
+        <SourceItem ItemsPerMinute="3.75" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Reinforced Iron Plate" ItemCategory="Item" Name="Bolted Iron Plate" IsAlternativeRecipe="true" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="90" ItemType="Iron Plate" />
+        <SourceItem ItemsPerMinute="250" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Reinforced Iron Plate" ItemCategory="Item" Name="Stitched Iron Plate" IsAlternativeRecipe="true" OutputPerMinute="5.625">
+      <Inputs>
+        <SourceItem ItemsPerMinute="18.75" ItemType="Iron Plate" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Wire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Screw" ItemCategory="Item" Name="Screw" IsAlternativeRecipe="false" OutputPerMinute="40">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Iron Rod" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Screw" ItemCategory="Item" Name="Casted Screw" IsAlternativeRecipe="true" OutputPerMinute="50">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12.5" ItemType="Iron Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Screw" ItemCategory="Item" Name="Steel Screw" IsAlternativeRecipe="true" OutputPerMinute="260">
+      <Inputs>
+        <SourceItem ItemsPerMinute="5" ItemType="Steel Beam" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Wire" ItemCategory="Item" Name="Wire" IsAlternativeRecipe="false" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Copper Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Wire" ItemCategory="Item" Name="Fused Wire" IsAlternativeRecipe="true" OutputPerMinute="90">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12" ItemType="Copper Ingot" />
+        <SourceItem ItemsPerMinute="3" ItemType="Caterium Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Wire" ItemCategory="Item" Name="Iron Wire" IsAlternativeRecipe="true" OutputPerMinute="22.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12.5" ItemType="Iron Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Wire" ItemCategory="Item" Name="Caterium Wire" IsAlternativeRecipe="true" OutputPerMinute="120">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Caterium Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Copper Sheet" ItemCategory="Item" Name="Copper Sheet" IsAlternativeRecipe="false" OutputPerMinute="10">
+      <Inputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Copper Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Copper Sheet" ItemCategory="Item" Name="Steamed Copper Sheet" IsAlternativeRecipe="true" OutputPerMinute="22.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="22.5" ItemType="Copper Ingot" />
+        <SourceItem ItemsPerMinute="22.5" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Solid Biofuel" ItemCategory="Item" Name="Solid Biofuel" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="120" ItemType="Biomass" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Modular Frame" ItemCategory="Item" Name="Modular Frame" IsAlternativeRecipe="false" OutputPerMinute="2">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="12" ItemType="Iron Rod" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Modular Frame" ItemCategory="Item" Name="Bolted Frame" IsAlternativeRecipe="true" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="140" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Modular Frame" ItemCategory="Item" Name="Steeled Frame" IsAlternativeRecipe="true" OutputPerMinute="3">
+      <Inputs>
+        <SourceItem ItemsPerMinute="2" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="10" ItemType="Steel Pipe" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Rotor" ItemCategory="Item" Name="Rotor" IsAlternativeRecipe="false" OutputPerMinute="4">
+      <Inputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Iron Rod" />
+        <SourceItem ItemsPerMinute="100" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Rotor" ItemCategory="Item" Name="Copper Rotor" IsAlternativeRecipe="true" OutputPerMinute="11.25">
+      <Inputs>
+        <SourceItem ItemsPerMinute="22.5" ItemType="Copper Sheet" />
+        <SourceItem ItemsPerMinute="195" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Rotor" ItemCategory="Item" Name="Steel Rotor" IsAlternativeRecipe="true" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="30" ItemType="Wire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Smart Plating" ItemCategory="Item" Name="Smart Plating" IsAlternativeRecipe="false" OutputPerMinute="2">
+      <Inputs>
+        <SourceItem ItemsPerMinute="2" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="2" ItemType="Rotor" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Smart Plating" ItemCategory="Item" Name="Plastic Smart Plating" IsAlternativeRecipe="true" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="2.5" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="2.5" ItemType="Rotor" />
+        <SourceItem ItemsPerMinute="7.5" ItemType="Plastic" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Steel Beam" ItemCategory="Item" Name="Steel Beam" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Steel Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Steel Ingot" ItemCategory="Ingot" Name="Steel Ingot" IsAlternativeRecipe="false" OutputPerMinute="45">
+      <Inputs>
+        <SourceItem ItemsPerMinute="45" ItemType="Iron Ore" />
+        <SourceItem ItemsPerMinute="45" ItemType="Coal" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Steel Ingot" ItemCategory="Ingot" Name="Coke Steel Ingot" IsAlternativeRecipe="true" OutputPerMinute="100">
+      <Inputs>
+        <SourceItem ItemsPerMinute="75" ItemType="Iron Ore" />
+        <SourceItem ItemsPerMinute="75" ItemType="Petroleum Coke" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Steel Ingot" ItemCategory="Ingot" Name="Compacted Steel Ingot" IsAlternativeRecipe="true" OutputPerMinute="37.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="22.5" ItemType="Iron Ore" />
+        <SourceItem ItemsPerMinute="11.25" ItemType="Compacted Coal" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Steel Ingot" ItemCategory="Ingot" Name="Solid Steel Ingot" IsAlternativeRecipe="true" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="40" ItemType="Iron Ingot" />
+        <SourceItem ItemsPerMinute="40" ItemType="Coal" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Steel Pipe" ItemCategory="Item" Name="Steel Pipe" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Steel Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Versatile Framework" ItemCategory="Item" Name="Versatile Framework" IsAlternativeRecipe="false" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="2.5" ItemType="Modular Frame" />
+        <SourceItem ItemsPerMinute="30" ItemType="Steel Beam" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Versatile Framework" ItemCategory="Item" Name="Flexible Framework" IsAlternativeRecipe="true" OutputPerMinute="7.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3.75" ItemType="Modular Frame" />
+        <SourceItem ItemsPerMinute="22.5" ItemType="Steel Beam" />
+        <SourceItem ItemsPerMinute="30" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Automated Wiring" ItemCategory="Item" Name="Automated Wiring" IsAlternativeRecipe="false" OutputPerMinute="2.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="2.5" ItemType="Stator" />
+        <SourceItem ItemsPerMinute="50" ItemType="Cable" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Automated Wiring" ItemCategory="Item" Name="Automated Speed Wiring" IsAlternativeRecipe="true" OutputPerMinute="7.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3.75" ItemType="Stator" />
+        <SourceItem ItemsPerMinute="75" ItemType="Wire" />
+        <SourceItem ItemsPerMinute="1.875" ItemType="High-Speed Connector" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Encased Industrial Beam" ItemCategory="Item" Name="Encased Industrial Beam" IsAlternativeRecipe="false" OutputPerMinute="6">
+      <Inputs>
+        <SourceItem ItemsPerMinute="24" ItemType="Steel Beam" />
+        <SourceItem ItemsPerMinute="30" ItemType="Concrete" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Encased Industrial Beam" ItemCategory="Item" Name="Encased Industrial Pipe" IsAlternativeRecipe="true" OutputPerMinute="4">
+      <Inputs>
+        <SourceItem ItemsPerMinute="28" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="20" ItemType="Concrete" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Heavy Modular Frame" ItemCategory="Item" Name="Heavy Modular Frame" IsAlternativeRecipe="false" OutputPerMinute="2">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Modular Frame" />
+        <SourceItem ItemsPerMinute="30" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="10" ItemType="Encased Industrial Beam" />
+        <SourceItem ItemsPerMinute="200" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Heavy Modular Frame" ItemCategory="Item" Name="Heavy Flexible Frame" IsAlternativeRecipe="true" OutputPerMinute="3.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="18.75" ItemType="Modular Frame" />
+        <SourceItem ItemsPerMinute="11.25" ItemType="Encased Industrial Beam" />
+        <SourceItem ItemsPerMinute="75" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="390" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Heavy Modular Frame" ItemCategory="Item" Name="Heavy Encased Frame" IsAlternativeRecipe="true" OutputPerMinute="2.8125">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Modular Frame" />
+        <SourceItem ItemsPerMinute="9.375" ItemType="Encased Industrial Beam" />
+        <SourceItem ItemsPerMinute="33.75" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="20.625" ItemType="Concrete" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Motor" ItemCategory="Item" Name="Motor" IsAlternativeRecipe="false" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Rotor" />
+        <SourceItem ItemsPerMinute="10" ItemType="Stator" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Motor" ItemCategory="Item" Name="Rigour Motor" IsAlternativeRecipe="true" OutputPerMinute="7.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3.75" ItemType="Rotor" />
+        <SourceItem ItemsPerMinute="3.75" ItemType="Stator" />
+        <SourceItem ItemsPerMinute="1.25" ItemType="Crystal Oscillator" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Stator" ItemCategory="Item" Name="Stator" IsAlternativeRecipe="false" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="40" ItemType="Wire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Stator" ItemCategory="Item" Name="Quickwire Stator" IsAlternativeRecipe="true" OutputPerMinute="8">
+      <Inputs>
+        <SourceItem ItemsPerMinute="16" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="60" ItemType="Quickwire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Adaptive Control Unit" ItemCategory="Item" Name="Adaptive Control Unit" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Automated Wiring" />
+        <SourceItem ItemsPerMinute="5" ItemType="Circuit Board" />
+        <SourceItem ItemsPerMinute="1" ItemType="Heavy Modular Frame" />
+        <SourceItem ItemsPerMinute="1" ItemType="Computer" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Circuit Board" ItemCategory="Item" Name="Circuit Board" IsAlternativeRecipe="false" OutputPerMinute="7.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Copper Sheet" />
+        <SourceItem ItemsPerMinute="30" ItemType="Plastic" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Circuit Board" ItemCategory="Item" Name="Electrode Circuit Board" IsAlternativeRecipe="true" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="45" ItemType="Petroleum Coke" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Circuit Board" ItemCategory="Item" Name="Silicone Circuit Board" IsAlternativeRecipe="true" OutputPerMinute="12.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="27.5" ItemType="Copper Sheet" />
+        <SourceItem ItemsPerMinute="27.5" ItemType="Silica" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Circuit Board" ItemCategory="Item" Name="Caterium Circuit Board" IsAlternativeRecipe="true" OutputPerMinute="8.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12.5" ItemType="Plastic" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Quickwire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Computer" ItemCategory="Item" Name="Computer" IsAlternativeRecipe="false" OutputPerMinute="2.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="25" ItemType="Circuit Board" />
+        <SourceItem ItemsPerMinute="22.5" ItemType="Cable" />
+        <SourceItem ItemsPerMinute="45" ItemType="Plastic" />
+        <SourceItem ItemsPerMinute="130" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Computer" ItemCategory="Item" Name="Crystal Computer" IsAlternativeRecipe="true" OutputPerMinute="2.8125">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Circuit Board" />
+        <SourceItem ItemsPerMinute="2.8125" ItemType="Crystal Oscillator" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Computer" ItemCategory="Item" Name="Caterium Computer" IsAlternativeRecipe="true" OutputPerMinute="3.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="26.25" ItemType="Circuit Board" />
+        <SourceItem ItemsPerMinute="105" ItemType="Quickwire" />
+        <SourceItem ItemsPerMinute="45" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Empty Canister" ItemCategory="Item" Name="Empty Canister" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Plastic" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Fuel" ItemCategory="Fluid" Name="Unpackage Fuel" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Packaged Fuel" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Empty Canister" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Turbofuel" ItemCategory="Item" Name="Unpackage Turbo Fuel" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Packaged Turbofuel" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Empty Canister" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Liquid Biofuel" ItemCategory="Fluid" Name="Unpackage Liquid Biofuel" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Packaged Liquid Biofuel" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Empty Canister" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Heavy Oil Residue" ItemCategory="Fluid" Name="Unpackage Heavy Oil Residue" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Packaged Heavy Oil Residue" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Empty Canister" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Fuel" ItemCategory="Fluid" Name="Fuel" IsAlternativeRecipe="false" OutputPerMinute="40">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Crude Oil" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Polymer Resin" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Fuel" ItemCategory="Fluid" Name="Residual Fuel" IsAlternativeRecipe="false" OutputPerMinute="40">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Heavy Oil Residue" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Packaged Fuel" ItemCategory="Item" Name="Packaged Fuel" IsAlternativeRecipe="false" OutputPerMinute="40">
+      <Inputs>
+        <SourceItem ItemsPerMinute="40" ItemType="Fuel" />
+        <SourceItem ItemsPerMinute="40" ItemType="Empty Canister" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Packaged Fuel" ItemCategory="Item" Name="Diluted Packaged Fuel" IsAlternativeRecipe="true" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Heavy Oil Residue" />
+        <SourceItem ItemsPerMinute="60" ItemType="Packaged Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Plastic" ItemCategory="Item" Name="Plastic" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Crude Oil" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Heavy Oil Residue" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Rubber" ItemCategory="Item" Name="Rubber" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Crude Oil" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Heavy Oil Residue" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Heavy Oil Residue" ItemCategory="Fluid" Name="Heavy Oil Residue" IsAlternativeRecipe="true" OutputPerMinute="40">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Crude Oil" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Polymer Resin" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Polymer Resin" ItemCategory="BasicItem" Name="Polymer Resin" IsAlternativeRecipe="true" OutputPerMinute="130">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Crude Oil" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Heavy Oil Residue" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Packaged Heavy Oil Residue" ItemCategory="Item" Name="Packaged Heavy Oil Residue" IsAlternativeRecipe="false" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Heavy Oil Residue" />
+        <SourceItem ItemsPerMinute="30" ItemType="Empty Canister" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Liquid Biofuel" ItemCategory="Fluid" Name="Liquid Biofuel" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="90" ItemType="Solid Biofuel" />
+        <SourceItem ItemsPerMinute="45" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Packaged Liquid Biofuel" ItemCategory="Item" Name="Packaged Liquid Biofuel" IsAlternativeRecipe="false" OutputPerMinute="40">
+      <Inputs>
+        <SourceItem ItemsPerMinute="40" ItemType="Liquid Biofuel" />
+        <SourceItem ItemsPerMinute="40" ItemType="Empty Canister" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Modular Engine" ItemCategory="Item" Name="Modular Engine" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="2" ItemType="Motor" />
+        <SourceItem ItemsPerMinute="15" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="2" ItemType="Smart Plating" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Petroleum Coke" ItemCategory="Item" Name="Petroleum Coke" IsAlternativeRecipe="false" OutputPerMinute="120">
+      <Inputs>
+        <SourceItem ItemsPerMinute="40" ItemType="Heavy Oil Residue" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Plastic" ItemCategory="Item" Name="Residual Plastic" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Polymer Resin" />
+        <SourceItem ItemsPerMinute="20" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Plastic" ItemCategory="Item" Name="Recycled Plastic" IsAlternativeRecipe="true" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="30" ItemType="Fuel" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Rubber" ItemCategory="Item" Name="Residual Rubber" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="40" ItemType="Polymer Resin" />
+        <SourceItem ItemsPerMinute="40" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Rubber" ItemCategory="Item" Name="Recycled Rubber" IsAlternativeRecipe="true" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="30" ItemType="Plastic" />
+        <SourceItem ItemsPerMinute="30" ItemType="Fuel" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Alumina Solution" ItemCategory="Fluid" Name="Alumina Solution" IsAlternativeRecipe="false" OutputPerMinute="80">
+      <Inputs>
+        <SourceItem ItemsPerMinute="70" ItemType="Bauxite" />
+        <SourceItem ItemsPerMinute="100" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Silica" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Alclad Aluminum Sheet" ItemCategory="Item" Name="Alclad Aluminum Sheet" IsAlternativeRecipe="false" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="60" ItemType="Aluminum Ingot" />
+        <SourceItem ItemsPerMinute="22.5" ItemType="Copper Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Aluminum Ingot" ItemCategory="Ingot" Name="Aluminum Ingot" IsAlternativeRecipe="false" OutputPerMinute="80">
+      <Inputs>
+        <SourceItem ItemsPerMinute="240" ItemType="Aluminum Scrap" />
+        <SourceItem ItemsPerMinute="140" ItemType="Silica" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Aluminum Ingot" ItemCategory="Ingot" Name="Pure Aluminum Ingot" IsAlternativeRecipe="true" OutputPerMinute="36">
+      <Inputs>
+        <SourceItem ItemsPerMinute="144" ItemType="Aluminum Scrap" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Battery" ItemCategory="Item" Name="Battery" IsAlternativeRecipe="false" OutputPerMinute="5.625">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Alclad Aluminum Sheet" />
+        <SourceItem ItemsPerMinute="30" ItemType="Wire" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Sulfur" />
+        <SourceItem ItemsPerMinute="15" ItemType="Plastic" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Electromagnetic Control Rod" ItemCategory="Item" Name="Electromagnetic Control Rod" IsAlternativeRecipe="false" OutputPerMinute="4">
+      <Inputs>
+        <SourceItem ItemsPerMinute="6" ItemType="Stator" />
+        <SourceItem ItemsPerMinute="4" ItemType="A.I. Limiter" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Electromagnetic Control Rod" ItemCategory="Item" Name="Electromagnetic Connection Rod" IsAlternativeRecipe="true" OutputPerMinute="10">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Stator" />
+        <SourceItem ItemsPerMinute="5" ItemType="High-Speed Connector" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Encased Uranium Cell" ItemCategory="Item" Name="Encased Uranium Cell" IsAlternativeRecipe="false" OutputPerMinute="10">
+      <Inputs>
+        <SourceItem ItemsPerMinute="40" ItemType="Uranium Pellet" />
+        <SourceItem ItemsPerMinute="9" ItemType="Concrete" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Encased Uranium Cell" ItemCategory="Item" Name="Infused Uranium Cell" IsAlternativeRecipe="true" OutputPerMinute="17.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Uranium Pellet" />
+        <SourceItem ItemsPerMinute="22.5" ItemType="Sulfur" />
+        <SourceItem ItemsPerMinute="22.5" ItemType="Silica" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Quickwire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Heat Sink" ItemCategory="Item" Name="Heat Sink" IsAlternativeRecipe="false" OutputPerMinute="10">
+      <Inputs>
+        <SourceItem ItemsPerMinute="40" ItemType="Alclad Aluminum Sheet" />
+        <SourceItem ItemsPerMinute="70" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Heat Sink" ItemCategory="Item" Name="Heat Exchanger" IsAlternativeRecipe="true" OutputPerMinute="13.125">
+      <Inputs>
+        <SourceItem ItemsPerMinute="37.5" ItemType="Alclad Aluminum Sheet" />
+        <SourceItem ItemsPerMinute="56.25" ItemType="Copper Sheet" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Nuclear Fuel Rod" ItemCategory="Item" Name="Nuclear Fuel Rod" IsAlternativeRecipe="false" OutputPerMinute="0.4">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Encased Uranium Cell" />
+        <SourceItem ItemsPerMinute="1.2" ItemType="Encased Industrial Beam" />
+        <SourceItem ItemsPerMinute="2" ItemType="Electromagnetic Control Rod" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Nuclear Fuel Rod" ItemCategory="Item" Name="Nuclear Fuel Unit" IsAlternativeRecipe="true" OutputPerMinute="0.6">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Encased Uranium Cell" />
+        <SourceItem ItemsPerMinute="2" ItemType="Electromagnetic Control Rod" />
+        <SourceItem ItemsPerMinute="0.6" ItemType="Crystal Oscillator" />
+        <SourceItem ItemsPerMinute="1.2" ItemType="Beacon" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Nuclear Waste" ItemCategory="Item" Name="Nuclear Waste" IsAlternativeRecipe="false" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="0.2" ItemType="Nuclear Fuel Rod" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Uranium Pellet" ItemCategory="Item" Name="Uranium Pellet" IsAlternativeRecipe="false" OutputPerMinute="50">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Uranium" />
+        <SourceItem ItemsPerMinute="80" ItemType="Sulfuric Acid" />
+      </Inputs>
+      <AdditionalOutputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Sulfuric Acid" />
+      </AdditionalOutputs>
+    </Recipe>
+    <Recipe ItemType="Sulfuric Acid" ItemCategory="Fluid" Name="Sulfuric Acid" IsAlternativeRecipe="false" OutputPerMinute="100">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Sulfur" />
+        <SourceItem ItemsPerMinute="50" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Turbo Motor" ItemCategory="Item" Name="Turbo Motor" IsAlternativeRecipe="false" OutputPerMinute="1.875">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Heat Sink" />
+        <SourceItem ItemsPerMinute="3.75" ItemType="Radio Control Unit" />
+        <SourceItem ItemsPerMinute="7.5" ItemType="Motor" />
+        <SourceItem ItemsPerMinute="45" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Turbo Motor" ItemCategory="Item" Name="Turbo Rigour Motor" IsAlternativeRecipe="true" OutputPerMinute="2.8125">
+      <Inputs>
+        <SourceItem ItemsPerMinute="6.5625" ItemType="Motor" />
+        <SourceItem ItemsPerMinute="4.6875" ItemType="Radio Control Unit" />
+        <SourceItem ItemsPerMinute="8.4375" ItemType="A.I. Limiter" />
+        <SourceItem ItemsPerMinute="6.5625" ItemType="Stator" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="A.I. Limiter" ItemCategory="Item" Name="A.I. Limiter" IsAlternativeRecipe="false" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="25" ItemType="Copper Sheet" />
+        <SourceItem ItemsPerMinute="100" ItemType="Quickwire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Black Powder" ItemCategory="BasicItem" Name="Black Powder" IsAlternativeRecipe="false" OutputPerMinute="7.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Coal" />
+        <SourceItem ItemsPerMinute="15" ItemType="Sulfur" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Black Powder" ItemCategory="BasicItem" Name="Fine Black Powder" IsAlternativeRecipe="true" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Sulfur" />
+        <SourceItem ItemsPerMinute="3.75" ItemType="Compacted Coal" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Caterium Ingot" ItemCategory="Ingot" Name="Caterium Ingot" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="45" ItemType="Caterium Ore" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Caterium Ingot" ItemCategory="Ingot" Name="Pure Caterium Ingot" IsAlternativeRecipe="true" OutputPerMinute="12">
+      <Inputs>
+        <SourceItem ItemsPerMinute="24" ItemType="Caterium Ore" />
+        <SourceItem ItemsPerMinute="24" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Compacted Coal" ItemCategory="Item" Name="Compacted Coal" IsAlternativeRecipe="true" OutputPerMinute="25">
+      <Inputs>
+        <SourceItem ItemsPerMinute="25" ItemType="Coal" />
+        <SourceItem ItemsPerMinute="25" ItemType="Sulfur" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Fabric" ItemCategory="Item" Name="Fabric" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Mycelia" />
+        <SourceItem ItemsPerMinute="75" ItemType="Biomass" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Fabric" ItemCategory="Item" Name="Polyester Fabric" IsAlternativeRecipe="true" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="80" ItemType="Polymer Resin" />
+        <SourceItem ItemsPerMinute="50" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="High-Speed Connector" ItemCategory="Item" Name="High-Speed Connector" IsAlternativeRecipe="false" OutputPerMinute="3.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="210" ItemType="Quickwire" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Cable" />
+        <SourceItem ItemsPerMinute="3.75" ItemType="Circuit Board" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="High-Speed Connector" ItemCategory="Item" Name="Silicone High-Speed Connector" IsAlternativeRecipe="true" OutputPerMinute="3">
+      <Inputs>
+        <SourceItem ItemsPerMinute="90" ItemType="Quickwire" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Silica" />
+        <SourceItem ItemsPerMinute="3" ItemType="Circuit Board" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Quickwire" ItemCategory="Item" Name="Quickwire" IsAlternativeRecipe="false" OutputPerMinute="60">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12" ItemType="Caterium Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Quickwire" ItemCategory="Item" Name="Fused Quickwire" IsAlternativeRecipe="true" OutputPerMinute="90">
+      <Inputs>
+        <SourceItem ItemsPerMinute="7.5" ItemType="Caterium Ingot" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Copper Ingot" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Power Shard" ItemCategory="Item" Name="Power Shard (1)" IsAlternativeRecipe="false" OutputPerMinute="6">
+      <Inputs>
+        <SourceItem ItemsPerMinute="6" ItemType="Green Power Slug" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Power Shard" ItemCategory="Item" Name="Power Shard (2)" IsAlternativeRecipe="false" OutputPerMinute="8">
+      <Inputs>
+        <SourceItem ItemsPerMinute="4" ItemType="Yellow Power Slug" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Power Shard" ItemCategory="Item" Name="Power Shard (3)" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3" ItemType="Purple Power Slug" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Quartz Crystal" ItemCategory="BasicItem" Name="Quartz Crystal" IsAlternativeRecipe="false" OutputPerMinute="22.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="37.5" ItemType="Raw Quartz" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Quartz Crystal" ItemCategory="BasicItem" Name="Pure Quartz Crystal" IsAlternativeRecipe="true" OutputPerMinute="52.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="67.5" ItemType="Raw Quartz" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Water" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Silica" ItemCategory="BasicItem" Name="Silica" IsAlternativeRecipe="false" OutputPerMinute="37.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="22.5" ItemType="Raw Quartz" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Silica" ItemCategory="BasicItem" Name="Cheap Silica" IsAlternativeRecipe="true" OutputPerMinute="26.25">
+      <Inputs>
+        <SourceItem ItemsPerMinute="11.25" ItemType="Raw Quartz" />
+        <SourceItem ItemsPerMinute="18.75" ItemType="Limestone" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Crystal Oscillator" ItemCategory="Item" Name="Crystal Oscillator" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="18" ItemType="Quartz Crystal" />
+        <SourceItem ItemsPerMinute="14" ItemType="Cable" />
+        <SourceItem ItemsPerMinute="2.5" ItemType="Reinforced Iron Plate" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Crystal Oscillator" ItemCategory="Item" Name="Insulated Crystal Oscillator" IsAlternativeRecipe="true" OutputPerMinute="1.875">
+      <Inputs>
+        <SourceItem ItemsPerMinute="18.75" ItemType="Quartz Crystal" />
+        <SourceItem ItemsPerMinute="13.125" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="1.875" ItemType="A.I. Limiter" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Radio Control Unit" ItemCategory="Item" Name="Radio Control Unit" IsAlternativeRecipe="false" OutputPerMinute="2.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Heat Sink" />
+        <SourceItem ItemsPerMinute="40" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="2.5" ItemType="Crystal Oscillator" />
+        <SourceItem ItemsPerMinute="2.5" ItemType="Computer" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Radio Control Unit" ItemCategory="Item" Name="Radio Control System" IsAlternativeRecipe="true" OutputPerMinute="3.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12.5" ItemType="Heat Sink" />
+        <SourceItem ItemsPerMinute="1.25" ItemType="Supercomputer" />
+        <SourceItem ItemsPerMinute="37.5" ItemType="Quartz Crystal" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Supercomputer" ItemCategory="Item" Name="Supercomputer" IsAlternativeRecipe="false" OutputPerMinute="1.875">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3.75" ItemType="Computer" />
+        <SourceItem ItemsPerMinute="3.75" ItemType="A.I. Limiter" />
+        <SourceItem ItemsPerMinute="5.625" ItemType="High-Speed Connector" />
+        <SourceItem ItemsPerMinute="52.5" ItemType="Plastic" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Turbofuel" ItemCategory="Fluid" Name="Turbofuel" IsAlternativeRecipe="true" OutputPerMinute="18.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="22.5" ItemType="Fuel" />
+        <SourceItem ItemsPerMinute="15" ItemType="Compacted Coal" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Turbofuel" ItemCategory="Item" Name="Turbo Heavy Fuel" IsAlternativeRecipe="true" OutputPerMinute="30">
+      <Inputs>
+        <SourceItem ItemsPerMinute="37.5" ItemType="Heavy Oil Residue" />
+        <SourceItem ItemsPerMinute="30" ItemType="Compacted Coal" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Packaged Turbofuel" ItemCategory="Item" Name="Packaged Turbofuel" IsAlternativeRecipe="false" OutputPerMinute="20">
+      <Inputs>
+        <SourceItem ItemsPerMinute="20" ItemType="Turbofuel" />
+        <SourceItem ItemsPerMinute="20" ItemType="Empty Canister" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <CollectableItem ItemType="Miner" ItemCategory="Item" Name="Miner" Count="1" />
+    <Recipe ItemType="Xeno-Zapper" ItemCategory="Item" Name="Xeno-Zapper" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Iron Rod" />
+        <SourceItem ItemsPerMinute="2" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="15" ItemType="Cable" />
+        <SourceItem ItemsPerMinute="50" ItemType="Wire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Beacon" ItemCategory="Item" Name="Beacon" IsAlternativeRecipe="false" OutputPerMinute="7.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="22.5" ItemType="Iron Plate" />
+        <SourceItem ItemsPerMinute="7.5" ItemType="Iron Rod" />
+        <SourceItem ItemsPerMinute="112.5" ItemType="Wire" />
+        <SourceItem ItemsPerMinute="15" ItemType="Cable" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Beacon" ItemCategory="Item" Name="Crystal Beacon" IsAlternativeRecipe="true" OutputPerMinute="10">
+      <Inputs>
+        <SourceItem ItemsPerMinute="2" ItemType="Steel Beam" />
+        <SourceItem ItemsPerMinute="8" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="0.5" ItemType="Crystal Oscillator" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Object Scanner" ItemCategory="Item" Name="Object Scanner" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="4" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="3" ItemType="Beacon" />
+        <SourceItem ItemsPerMinute="50" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Chainsaw" ItemCategory="Item" Name="Chainsaw" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="5" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="25" ItemType="Iron Rod" />
+        <SourceItem ItemsPerMinute="160" ItemType="Screw" />
+        <SourceItem ItemsPerMinute="15" ItemType="Cable" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Xeno-Basher" ItemCategory="Item" Name="Xeno-Basher" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="5" ItemType="Modular Frame" />
+        <SourceItem ItemsPerMinute="2" ItemType="Xeno-Zapper" />
+        <SourceItem ItemsPerMinute="25" ItemType="Cable" />
+        <SourceItem ItemsPerMinute="500" ItemType="Wire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Gas Mask" ItemCategory="Item" Name="Gas Mask" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="100" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="100" ItemType="Plastic" />
+        <SourceItem ItemsPerMinute="100" ItemType="Fabric" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Filter" ItemCategory="Item" Name="Filter" IsAlternativeRecipe="false" OutputPerMinute="7.5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="37.5" ItemType="Coal" />
+        <SourceItem ItemsPerMinute="15" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="15" ItemType="Fabric" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Jetpack" ItemCategory="Item" Name="Jetpack" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Plastic" />
+        <SourceItem ItemsPerMinute="15" ItemType="Circuit Board" />
+        <SourceItem ItemsPerMinute="50" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="25" ItemType="Cable" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Hazmat Suit" ItemCategory="Item" Name="Hazmat Suit" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Rubber" />
+        <SourceItem ItemsPerMinute="50" ItemType="Plastic" />
+        <SourceItem ItemsPerMinute="50" ItemType="Alclad Aluminum Sheet" />
+        <SourceItem ItemsPerMinute="50" ItemType="Fabric" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Iodine Infused Filter" ItemCategory="Item" Name="Iodine Infused Filter" IsAlternativeRecipe="false" OutputPerMinute="3.75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3.75" ItemType="Filter" />
+        <SourceItem ItemsPerMinute="30" ItemType="Quickwire" />
+        <SourceItem ItemsPerMinute="7.5" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Blade Runners" ItemCategory="Item" Name="Blade Runners" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="50" ItemType="Quickwire" />
+        <SourceItem ItemsPerMinute="3" ItemType="Modular Frame" />
+        <SourceItem ItemsPerMinute="3" ItemType="Rotor" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Color Gun" ItemCategory="Item" Name="Color Gun" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="5" ItemType="Iron Plate" />
+        <SourceItem ItemsPerMinute="80" ItemType="Screw" />
+        <SourceItem ItemsPerMinute="40" ItemType="Wire" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Color Cartridge" ItemCategory="Item" Name="Color Cartridge" IsAlternativeRecipe="false" OutputPerMinute="75">
+      <Inputs>
+        <SourceItem ItemsPerMinute="37.5" ItemType="Flower Petals" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Nobelisk Detonator" ItemCategory="Item" Name="Nobelisk Detonator" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="5" ItemType="Object Scanner" />
+        <SourceItem ItemsPerMinute="5" ItemType="Encased Industrial Beam" />
+        <SourceItem ItemsPerMinute="50" ItemType="Cable" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Nobelisk" ItemCategory="Item" Name="Nobelisk" IsAlternativeRecipe="false" OutputPerMinute="3">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Black Powder" />
+        <SourceItem ItemsPerMinute="30" ItemType="Steel Pipe" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Nobelisk" ItemCategory="Item" Name="Seismic Nobelisk" IsAlternativeRecipe="true" OutputPerMinute="6">
+      <Inputs>
+        <SourceItem ItemsPerMinute="12" ItemType="Black Powder" />
+        <SourceItem ItemsPerMinute="12" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="1.5" ItemType="Crystal Oscillator" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Parachute" ItemCategory="Item" Name="Parachute" IsAlternativeRecipe="false" OutputPerMinute="5">
+      <Inputs>
+        <SourceItem ItemsPerMinute="10" ItemType="Fabric" />
+        <SourceItem ItemsPerMinute="5" ItemType="Cable" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Rebar Gun" ItemCategory="Item" Name="Rebar Gun" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="6" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="16" ItemType="Iron Rod" />
+        <SourceItem ItemsPerMinute="100" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Spiked Rebar" ItemCategory="Item" Name="Spiked Rebar" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="15" ItemType="Iron Rod" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Rifle" ItemCategory="Item" Name="Rifle" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="25" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="3" ItemType="Heavy Modular Frame" />
+        <SourceItem ItemsPerMinute="20" ItemType="Circuit Board" />
+        <SourceItem ItemsPerMinute="250" ItemType="Screw" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <Recipe ItemType="Cartridge" ItemCategory="Item" Name="Cartridge" IsAlternativeRecipe="false" OutputPerMinute="15">
+      <Inputs>
+        <SourceItem ItemsPerMinute="3" ItemType="Beacon" />
+        <SourceItem ItemsPerMinute="30" ItemType="Steel Pipe" />
+        <SourceItem ItemsPerMinute="30" ItemType="Black Powder" />
+        <SourceItem ItemsPerMinute="30" ItemType="Rubber" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <CollectableItem ItemType="Cup" ItemCategory="Item" Name="Cup" Count="1" />
+    <Recipe ItemType="Factory Cart" ItemCategory="Item" Name="Factory Cart" IsAlternativeRecipe="false" OutputPerMinute="1">
+      <Inputs>
+        <SourceItem ItemsPerMinute="4" ItemType="Reinforced Iron Plate" />
+        <SourceItem ItemsPerMinute="4" ItemType="Iron Rod" />
+        <SourceItem ItemsPerMinute="2" ItemType="Rotor" />
+      </Inputs>
+      <AdditionalOutputs />
+    </Recipe>
+    <CollectableItem ItemType="Statue" ItemCategory="Collectable" Name="Adequate Pioneering" Count="0" />
+    <CollectableItem ItemType="Statue" ItemCategory="Collectable" Name="Satisfactory Pioneering" Count="0" />
+    <CollectableItem ItemType="Statue" ItemCategory="Collectable" Name="Pretty Good Pioneering" Count="0" />
+    <CollectableItem ItemType="Statue" ItemCategory="Collectable" Name="Golden Nut" Count="0" />
+    <CollectableItem ItemType="Statue" ItemCategory="Collectable" Name="Lizard Doggo" Count="0" />
+    <CollectableItem ItemType="Statue" ItemCategory="Collectable" Name="Confusing Creature" Count="0" />
+    <CollectableItem ItemType="Statue" ItemCategory="Collectable" Name="Silver Hog" Count="0" />
+  </Items>
+  <Productions />
+</Satisfactory>

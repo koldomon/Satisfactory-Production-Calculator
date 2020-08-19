@@ -119,7 +119,7 @@ Public Class MainViewModel
 #Region "Recipes"
     Public ReadOnly Property Recipes As List(Of ResourceView)
         Get
-            If _Recipes Is Nothing Then _Recipes = New List(Of ResourceView)
+            If (_Recipes Is Nothing) Then _Recipes = New List(Of ResourceView)
 
             Return _Recipes
         End Get
@@ -164,6 +164,9 @@ Public Class MainViewModel
                                  End Sub
 
         Me.Recipes.ForEach(subPrepareResource)
+
+        Me.Recipes.ForEach(Sub(x) Debug.WriteLine("{0};{1};{2}", x.Name, x.Type, x.ProductionCost))
+
 
         NotifyPropertyChanged(NameOf(Recipes))
         NotifyPropertyChanged(NameOf(DefaultRecipes))

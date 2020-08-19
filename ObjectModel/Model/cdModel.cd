@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ObjectModel.Recipe">
+    <Position X="3.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAACAAAAAggAAiIBQAEIgAAIgAAABAAAAAAAA=</HashCode>
+      <FileName>Model2\Recipe.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Inputs" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ObjectModel.SatisfactoryItem">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAgAAAAAACACAQAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model2\SatisfactoryItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectModel.SourceItem">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgBAAAAAAAAAAAAAAAAABAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model2\SourceItem.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectModel.WorldItem">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAQAAgAAAAAAAAAgAACAgAkAAQEAIAoAEEAAAAAAAA=</HashCode>
+      <FileName>Model2\WorldItem.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ObjectModel.Production">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAABAAAAAAAAAQAAQAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Model2\Production.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectModel.DataStore">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAARAACAAAAAAAEAAAAQAAADAAAAAAAQAAAGA=</HashCode>
+      <FileName>Model2\DataStore.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectModel.CollectableItem">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAgAACIAQAAAAAAIAAAAIAAAAAAAA=</HashCode>
+      <FileName>Model2\CollectableItem.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="ObjectModel.BaseProductionEnum">
+    <Position X="11.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAgAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Model2\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

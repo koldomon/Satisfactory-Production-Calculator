@@ -5,11 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Satisfactory"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:Satisfactory.ObjectModel;assembly=SatisfactoryObjectModel"
     x:Name="window"
     Title="Satisfactory Production Calculator"
     Width="1800"
     Height="1024"
-    d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}"
+    d:DataContext="{d:DesignInstance {x:Type local:DataStoreView}}"
     mc:Ignorable="d">
     <Window.Resources>
         <Style TargetType="GridSplitter">
@@ -93,7 +94,7 @@
                 Header="Resourcenode Type">
                 <ComboBox
                     VerticalAlignment="Top"
-                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:ResourceNodeTypeEnum}}}"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type model:ResourceNodeTypeEnum}}}"
                     SelectedItem="{Binding ResourceNodeType}" />
             </GroupBox>
             <GroupBox
@@ -102,7 +103,7 @@
                 Header="Miner Type">
                 <ComboBox
                     VerticalAlignment="Top"
-                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:MinerTypeEnum}}}"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type model:MinerTypeEnum}}}"
                     SelectedItem="{Binding MinerType}" />
             </GroupBox>
             <GroupBox
@@ -111,7 +112,7 @@
                 Header="Miner Speed">
                 <ComboBox
                     VerticalAlignment="Top"
-                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:MinerSpeedEnum}}}"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type model:MinerSpeedEnum}}}"
                     SelectedItem="{Binding MinerSpeed}" />
             </GroupBox>
             <GroupBox
@@ -120,7 +121,7 @@
                 Header="Belt Speed">
                 <ComboBox
                     VerticalAlignment="Top"
-                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type local:BeltSpeedEnum}}}"
+                    ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type model:BeltSpeedEnum}}}"
                     SelectedItem="{Binding BeltSpeed}" />
             </GroupBox>
             <GroupBox
@@ -131,7 +132,7 @@
                 Header="Global Resources">
                 <ListView
                     VerticalAlignment="Top"
-                    ItemsSource="{Binding GlobalResources, Mode=OneWay, NotifyOnSourceUpdated=True}">
+                    ItemsSource="{Binding WorldItems, Mode=OneWay, NotifyOnSourceUpdated=True}">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal" />
@@ -145,7 +146,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock
                                         Padding="2,0,0,0"
-                                        Text="{Binding Name, Mode=OneWay}" />
+                                        Text="{Binding ItemType, Mode=OneWay}" />
                                     <TextBlock
                                         Padding="0,0,3,0"
                                         Text=":" />
@@ -153,7 +154,7 @@
                                         Margin="0,0,0,0"
                                         Padding="0,0,5,0"
                                         FontWeight="Medium"
-                                        Text="{Binding ItemsPerMinute, Mode=OneWay, StringFormat=\{0:N0\}}" />
+                                        Text="{Binding TotalItems, Mode=OneWay, StringFormat=\{0:N0\}}" />
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
@@ -210,7 +211,7 @@
                             x:Name="cbAddRecipe"
                             Grid.Column="0"
                             DisplayMemberPath="DisplayName"
-                            ItemsSource="{Binding OrderedRecipes}" />
+                            ItemsSource="{Binding Recipes}" />
                         <TextBox
                             x:Name="txtAddItemsPerMinute"
                             Grid.Column="1"
@@ -233,13 +234,13 @@
                             <DataGridTextColumn
                                 Width="Auto"
                                 MinWidth="100"
-                                Binding="{Binding Recipe.Name, Mode=OneWay}"
+                                Binding="{Binding Name, Mode=OneWay}"
                                 Header="Name"
                                 IsReadOnly="True" />
                             <DataGridTextColumn
                                 Width="*"
                                 MinWidth="100"
-                                Binding="{Binding Recipe.Type, Mode=OneWay}"
+                                Binding="{Binding ItemType, Mode=OneWay}"
                                 Header="Type"
                                 IsReadOnly="True" />
                             <DataGridTextColumn
@@ -282,24 +283,24 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     d:DataContext="{d:DesignInstance {x:Type local:ProductionView}}"
-                                    Text="{Binding Recipe.Name, Mode=OneWay}" />
+                                    Text="{Binding Name, Mode=OneWay}" />
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     d:DataContext="{d:DesignInstance {x:Type local:ProductionView}}"
                                     FontSize="10"
-                                    Text="{Binding Recipe.Type, StringFormat=' (\{0\})'}" />
+                                    Text="{Binding ItemType, StringFormat=' (\{0\})'}" />
                             </StackPanel>
                         </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate DataType="{x:Type local:ResourceView}">
+                        <HierarchicalDataTemplate DataType="{x:Type local:RecipeView}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     HorizontalAlignment="Stretch"
-                                    d:DataContext="{d:DesignInstance {x:Type local:ResourceView}}"
+                                    d:DataContext="{d:DesignInstance {x:Type local:RecipeView}}"
                                     Text="{Binding Name}" />
                                 <TextBlock
                                     HorizontalAlignment="Stretch"
-                                    d:DataContext="{d:DesignInstance {x:Type local:ResourceView}}"
-                                    Text="{Binding Type, StringFormat=' (\{0\})'}" />
+                                    d:DataContext="{d:DesignInstance {x:Type local:RecipeView}}"
+                                    Text="{Binding ItemType, StringFormat=' (\{0\})'}" />
                             </StackPanel>
                         </HierarchicalDataTemplate>
                     </TreeView.Resources>
@@ -357,7 +358,7 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 HorizontalAlignment="Stretch"
-                                Text="{Binding SelectedProduction.Recipe.ProductionRate, Mode=OneWay, NotifyOnSourceUpdated=True, StringFormat=\{0:0.####\}}"
+                                Text="{Binding SelectedProduction.ItemsPerMinute, Mode=OneWay, NotifyOnSourceUpdated=True, StringFormat=\{0:0.####\}}"
                                 TextAlignment="Left" />
                             <TextBlock
                                 Grid.Row="1"
@@ -367,7 +368,7 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 HorizontalAlignment="Stretch"
-                                Text="{Binding SelectedProduction.Recipe.ProductionCost, Mode=OneWay, StringFormat=\{0:0.######\}}"
+                                Text="{Binding SelectedProduction.Recipe.Costs, Mode=OneWay, StringFormat=\{0:0.######\}}"
                                 TextAlignment="Left" />
                             <TextBlock
                                 Grid.Row="2"
@@ -393,12 +394,12 @@
                                     CanUserDeleteRows="False"
                                     CanUserResizeRows="False"
                                     ColumnWidth="SizeToHeader"
-                                    ItemsSource="{Binding SelectedProduction.Recipe.Resources, Mode=OneWay}"
+                                    ItemsSource="{Binding SelectedProduction.Recipe.Inputs, Mode=OneWay}"
                                     SelectionMode="Extended">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn
                                             Width="*"
-                                            Binding="{Binding Type, Mode=OneWay}"
+                                            Binding="{Binding ItemType, Mode=OneWay}"
                                             Header="Type" />
                                         <DataGridTextColumn
                                             Width="Auto"
@@ -424,12 +425,12 @@
                                     CanUserDeleteRows="False"
                                     CanUserResizeRows="False"
                                     ColumnWidth="SizeToHeader"
-                                    ItemsSource="{Binding SelectedProduction.Recipe.AdditionalItems, Mode=OneWay}"
+                                    ItemsSource="{Binding SelectedProduction.Recipe.AdditionalOutputs, Mode=OneWay}"
                                     SelectionMode="Extended">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn
                                             Width="*"
-                                            Binding="{Binding Type, Mode=OneWay}"
+                                            Binding="{Binding ItemType, Mode=OneWay}"
                                             Header="Type" />
                                         <DataGridTextColumn
                                             Width="Auto"
@@ -462,12 +463,12 @@
                         <TextBox
                             Grid.Column="0"
                             IsReadOnly="True"
-                            Text="{Binding SelectedProduction.Recipe.Name, Mode=OneWay}" />
+                            Text="{Binding SelectedProduction.Name, Mode=OneWay}" />
                         <TextBox
                             Grid.Column="1"
                             FontSize="10"
                             IsReadOnly="True"
-                            Text="{Binding SelectedProduction.Recipe.Type, Mode=OneWay}" />
+                            Text="{Binding SelectedProduction.ItemType, Mode=OneWay}" />
                         <TextBox
                             Grid.Column="2"
                             IsReadOnly="True"
@@ -500,11 +501,11 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="*"
-                                Binding="{Binding Recipe.Name, Mode=OneWay}"
+                                Binding="{Binding Name, Mode=OneWay}"
                                 Header="Name" />
                             <DataGridTextColumn
                                 Width="Auto"
-                                Binding="{Binding Recipe.Type, Mode=OneWay}"
+                                Binding="{Binding ItemType, Mode=OneWay}"
                                 Header="Type" />
                             <DataGridTextColumn
                                 Width="Auto"
@@ -664,7 +665,7 @@
                             CanUserResizeRows="False"
                             CanUserSortColumns="True"
                             ColumnWidth="SizeToHeader"
-                            ItemsSource="{Binding OrderedRecipes}"
+                            ItemsSource="{Binding Recipes}"
                             SelectionMode="Single">
                             <DataGrid.Columns>
                                 <DataGridCheckBoxColumn
@@ -680,7 +681,7 @@
                                 </DataGridCheckBoxColumn>
                                 <DataGridCheckBoxColumn
                                     Width="Auto"
-                                    Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"
+                                    Binding="{Binding IsActiveAlternativeRecipe, UpdateSourceTrigger=PropertyChanged}"
                                     Header="Act">
                                     <DataGridCheckBoxColumn.CellStyle>
                                         <Style TargetType="{x:Type DataGridCell}">
@@ -694,16 +695,16 @@
                                     Header="Name" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding Type, Mode=OneWay}"
+                                    Binding="{Binding ItemType, Mode=OneWay}"
                                     Header="Type" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding Category, Mode=OneWay}"
+                                    Binding="{Binding ItemCategory, Mode=OneWay}"
                                     Header="Category" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
-                                    Header="Prod.Rate">
+                                    Binding="{Binding OutputPerMinute, Mode=OneWay, StringFormat=\{0:0.####\}}"
+                                    Header="Output">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="Margin" Value="0,0,3,0" />
@@ -713,8 +714,8 @@
                                 </DataGridTextColumn>
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
-                                    Header="Resources">
+                                    Binding="{Binding Costs, Mode=OneWay, StringFormat=\{0:0.000000000\}}"
+                                    Header="Costs">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
                                             <Setter Property="Margin" Value="0,0,3,0" />
@@ -732,12 +733,12 @@
                             CanUserDeleteRows="False"
                             CanUserResizeRows="False"
                             ColumnWidth="SizeToHeader"
-                            ItemsSource="{Binding AlternateRecipes}"
+                            ItemsSource="{Binding AlternativeRecipes}"
                             SelectionMode="Extended">
                             <DataGrid.Columns>
                                 <DataGridCheckBoxColumn
                                     Width="Auto"
-                                    Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}"
+                                    Binding="{Binding IsActiveAlternativeRecipe, UpdateSourceTrigger=PropertyChanged}"
                                     Header="Active" />
                                 <DataGridTextColumn
                                     Width="*"
@@ -745,15 +746,15 @@
                                     Header="Name" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding Type, Mode=OneWay}"
+                                    Binding="{Binding ItemType, Mode=OneWay}"
                                     Header="Type" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding Category, Mode=OneWay}"
+                                    Binding="{Binding ItemCategory, Mode=OneWay}"
                                     Header="Category" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
+                                    Binding="{Binding OutputPerMinute, Mode=OneWay, StringFormat=\{0:0.####\}}"
                                     Header="Prod.Rate">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
@@ -764,7 +765,7 @@
                                 </DataGridTextColumn>
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
+                                    Binding="{Binding Costs, Mode=OneWay, StringFormat=\{0:0.000000000\}}"
                                     Header="Resources">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
@@ -792,15 +793,15 @@
                                     Header="Name" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding Type, Mode=OneWay}"
+                                    Binding="{Binding ItemType, Mode=OneWay}"
                                     Header="Type" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding Category, Mode=OneWay}"
+                                    Binding="{Binding ItemCategory, Mode=OneWay}"
                                     Header="Category" />
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding ProductionRate, Mode=OneWay, StringFormat=\{0:0.####\}}"
+                                    Binding="{Binding OutputPerMinute, Mode=OneWay, StringFormat=\{0:0.####\}}"
                                     Header="Prod.Rate">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">
@@ -811,7 +812,7 @@
                                 </DataGridTextColumn>
                                 <DataGridTextColumn
                                     Width="Auto"
-                                    Binding="{Binding ProductionCost, Mode=OneWay, StringFormat=\{0:0.0######\}}"
+                                    Binding="{Binding Costs, Mode=OneWay, StringFormat=\{0:0.000000000\}}"
                                     Header="Resources">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="TextBlock">

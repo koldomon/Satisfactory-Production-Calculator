@@ -25,12 +25,12 @@
         Get
             If (Not _GlobalSourcesSum.HasValue) Then
                 If (Me.GlobalSources IsNot Nothing) AndAlso (Me.GlobalSources.Any) Then
-                    If Me.Name.Equals("Crude Oil") Then
+                    If (Not String.IsNullOrEmpty(Me.Name)) AndAlso (Me.Name.Equals("Crude Oil")) Then
                         _GlobalSourcesSum = Me.GlobalSources.Sum(Function(x) [Enum].Parse(GetType(ResourceNodeTypeEnum), x.GlobalSourcesType) * 2 * x.GlobalSourcesCount)
                     Else
                         _GlobalSourcesSum = Me.GlobalSources.Sum(Function(x) [Enum].Parse(GetType(ResourceNodeTypeEnum), x.GlobalSourcesType) * x.GlobalSourcesCount)
                     End If
-                ElseIf Me.Name.Equals("Water") Then
+                ElseIf (Not String.IsNullOrEmpty(Me.Name)) AndAlso (Me.Name.Equals("Water")) Then
                     _GlobalSourcesSum = ResourceNodeTypeEnum.Pure * 100
                 Else
                     _GlobalSourcesSum = 0

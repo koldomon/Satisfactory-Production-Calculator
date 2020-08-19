@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Satisfactory</RootNamespace>
     <AssemblyName>SatisfactoryProductionCalculator</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <AssemblyVersion>0.2.2004.176</AssemblyVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>C:\Users\markus.POWERLAB\source\repos\Satisfactory Calculator\builds\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -122,16 +123,15 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Dataflow\dfGetResources.vb" />
-    <Compile Include="Model\clEnums.vb" />
-    <Compile Include="Model\clProduction.vb" />
-    <Compile Include="Model\clProductionItem.vb" />
-    <Compile Include="Model\clResource.vb" />
-    <Compile Include="Model\SatifactoryResources.vb" />
+    <Compile Include="Helper\EnumBindingSourceExtention.vb" />
+    <Compile Include="ViewModel\CollectableItemView.vb" />
+    <Compile Include="ViewModel\DataStoreView.vb" />
+    <Compile Include="ViewModel\ProductionView.vb" />
+    <Compile Include="ViewModel\RecipeView.vb" />
+    <Compile Include="ViewModel\ItemView.vb" />
+    <Compile Include="ViewModel\SourceItemView.vb" />
     <Compile Include="ViewModel\ViewModelBase.vb" />
-    <Compile Include="ViewModel\vmMainView.vb" />
-    <Compile Include="ViewModel\vmProductionView.vb" />
-    <Compile Include="ViewModel\vmResourceView.vb" />
+    <Compile Include="ViewModel\WorldItemView.vb" />
     <Compile Include="View\MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -190,6 +190,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sources\SatisfactoryRecipes2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <Content Include="sources\SatisfactoryRecipes.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -218,6 +221,12 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectModel\ObjectModel.vbproj">
+      <Project>{1d502194-4785-4c70-8c0a-b3bba8a7afc1}</Project>
+      <Name>ObjectModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

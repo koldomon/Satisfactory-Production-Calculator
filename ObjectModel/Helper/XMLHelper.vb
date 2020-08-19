@@ -1,50 +1,10 @@
 ﻿Imports System.Globalization
 Imports System.IO
-Imports System.Text
 Imports System.Xml
 Imports System.Xml.Serialization
-Imports Microsoft.VisualStudio.TestTools.UnitTesting
-Imports Satisfactory
 
-<TestClass()> Public Class TestViewModel
-    Public Shared glbViewModel As MainViewModel
-
-    <ClassInitialize> Public Shared Sub InitClass(thisContext As TestContext)
-        If (thisContext Is Nothing) Then Throw New ArgumentNullException(NameOf(thisContext))
-
-        If (My.Settings.ActiveAlternateRecipes Is Nothing) Then My.Settings.ActiveAlternateRecipes = New Specialized.StringCollection
-
-        Dim myRecipes As List(Of Resource) = LoadRecipes()
-        If myRecipes Is Nothing Then Throw New NullReferenceException("Failed to load SatisfactoryRecipes.xml")
-
-        glbViewModel = New MainViewModel
-        glbViewModel.SetRecipes(myRecipes, My.Settings.ActiveAlternateRecipes.Cast(Of String).ToList)
-    End Sub
-
-    <DataTestMethod, DynamicData(NameOf(GetAllRecipes), DynamicDataSourceType.Method)>
-    Public Sub TestAllProductions(thisRecipe As ResourceView)
-        Dim myProdView = glbViewModel.AddProduction(thisRecipe, 10)
-        Assert.IsNotNull(myProdView.Productions)
-        Assert.IsNotNull(myProdView.AdditionalItems)
-    End Sub
-
-
-    Private Shared Iterator Function GetAllRecipes() As IEnumerable(Of Object())
-        For Each myRecipe In glbViewModel.Recipes
-            Yield New Object() {myRecipe}
-        Next
-    End Function
-
-    Private Shared Function LoadRecipes() As List(Of Resource)
-        Dim myStore = ReadFromXML(Of SatifactoryResources)(IO.Path.Combine(".\sources", "SatisfactoryRecipes.xml"))
-        If (myStore IsNot Nothing) Then
-            Return myStore.Recipes
-        End If
-
-        Return Nothing
-    End Function
-
-    Private Shared Function ReadFromXML(Of T)(f As String) As T
+Public Module XMLHelper
+    Public Function ReadFromXML(Of T)(f As String) As T
         If (String.IsNullOrEmpty(f)) Then Throw New ArgumentException(NameOf(f))
 
         Debug.Assert(IO.Path.GetExtension(f) = ".xml")
@@ -87,8 +47,7 @@ Imports Satisfactory
 
         Return Nothing
     End Function
-
-    Public Shared Function WriteToXML(Of T)(o As T, f As String) As String
+    Public Function WriteToXML(Of T)(o As T, f As String) As String
         If (String.IsNullOrEmpty(f)) Then Throw New ArgumentException(NameOf(f))
 
         Debug.Assert(IO.Path.GetExtension(f) = ".xml")
@@ -99,7 +58,8 @@ Imports Satisfactory
                                                               .Encoding = Text.Encoding.UTF8,
                                                               .Indent = True,
                                                               .CloseOutput = False,
-                                                              .WriteEndDocumentOnClose = False
+                                                              .WriteEndDocumentOnClose = False,
+                                                              .NamespaceHandling = NamespaceHandling.OmitDuplicates
                                                               })
 
                 Dim mySerializer As New XmlSerializer(GetType(T))
@@ -121,7 +81,7 @@ Imports Satisfactory
         Return Nothing
     End Function
 
-    Private Shared Sub HandleUnknownAttribute(sender As Object, e As XmlAttributeEventArgs)
+    Private Sub HandleUnknownAttribute(sender As Object, e As XmlAttributeEventArgs)
         Dim myEventString As String
 
         If (e.ObjectBeingDeserialized IsNot Nothing) Then
@@ -143,7 +103,7 @@ Imports Satisfactory
 
         Debug.WriteLine(myEventString)
     End Sub
-    Private Shared Sub HandleUnknownElement(sender As Object, e As XmlElementEventArgs)
+    Private Sub HandleUnknownElement(sender As Object, e As XmlElementEventArgs)
         Dim myEventString As String
 
         If (e.ObjectBeingDeserialized IsNot Nothing) Then
@@ -166,4 +126,4 @@ Imports Satisfactory
         Debug.WriteLine(myEventString)
     End Sub
 
-End Class
+End Module
